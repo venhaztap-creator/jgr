@@ -4,6 +4,11 @@ import { useState, useEffect, useRef } from 'react';
 import Link from 'next/link';
 
 const HERO_SLIDES = [
+  {
+    isVideo: true,
+    videoSrc: '/assets/jgr/hero-video.mp4',
+    title: '', sub: '', legal: '', label: '', bg: '', productImg: '', accentClass: '', barClass: 'bg-white'
+  },
   { 
     title:'15% OFF', 
     sub:'EN ACEITES SINTÉTICOS DE ALTO RENDIMIENTO', 
@@ -53,7 +58,7 @@ export default function HeroSection() {
 
   useEffect(() => {
     const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-    if (prefersReducedMotion || isPaused) {
+    if (prefersReducedMotion || isPaused || slide.isVideo) {
       if (timerRef.current) clearInterval(timerRef.current);
       return;
     }
@@ -63,7 +68,23 @@ export default function HeroSection() {
     return () => {
       if (timerRef.current) clearInterval(timerRef.current);
     };
-  }, [current, isPaused]);
+  }, [current, isPaused, slide.isVideo]);
+
+  useEffect(() => {
+    if (slide.isVideo) {
+      const vid = document.getElementById('hero-video-0') as HTMLVideoElement;
+      if (vid) {
+        vid.currentTime = 0;
+        vid.play().catch(e => console.log('Autoplay prevented:', e));
+      }
+    }
+  }, [current, slide.isVideo]);
+
+  const handleVideoEnded = () => {
+    setTimeout(() => {
+      next();
+    }, 3000);
+  };
 
   const [touchStartPos, setTouchStartPos] = useState<number | null>(null);
   const [touchEndPos, setTouchEndPos] = useState<number | null>(null);
@@ -102,54 +123,71 @@ export default function HeroSection() {
       onTouchMove={onTouchMove}
       onTouchEnd={onTouchEnd}
     >
-      {/* Dynamic Background Image - Fully visible */}
+      {/* Dynamic Background Image or Video - Fully visible */}
       {HERO_SLIDES.map((s, idx) => (
-        <img 
-          key={idx}
-          src={s.bg}
-          alt=""
-          className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-1000 ease-in-out ${idx === current ? 'opacity-100' : 'opacity-0'}`}
-        />
+        s.isVideo ? (
+          <video 
+            key={idx}
+            id={`hero-video-${idx}`}
+            src={s.videoSrc}
+            autoPlay={idx === current}
+            muted
+            playsInline
+            onEnded={idx === current ? handleVideoEnded : undefined}
+            className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-1000 ease-in-out ${idx === current ? 'opacity-100 z-0' : 'opacity-0 -z-10'}`}
+          />
+        ) : (
+          <img 
+            key={idx}
+            src={s.bg}
+            alt=""
+            className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-1000 ease-in-out ${idx === current ? 'opacity-100 z-0' : 'opacity-0 -z-10'}`}
+          />
+        )
       ))}
 
       {/* Subtle darkening so white text is readable without hiding the products */}
-      <div className="absolute inset-0 bg-black/30 z-0"></div>
+      {!slide.isVideo && <div className="absolute inset-0 bg-black/30 z-0 transition-opacity duration-1000"></div>}
 
       <div 
-        className="container relative z-10 h-full flex flex-col md:flex-row items-center justify-between pt-[220px] md:pt-[240px] pb-[96px]"
-        onMouseEnter={() => setIsPaused(true)}
-        onMouseLeave={() => setIsPaused(false)}
+        className="container relative z-10 h-full flex flex-col md:flex-row items-center justify-between pt-[220px] md:pt-[240px] pb-[96px] pointer-events-none"
       >
+        <div className="absolute inset-0 pointer-events-auto" onMouseEnter={() => setIsPaused(true)} onMouseLeave={() => setIsPaused(false)} />
+
         {/* Navigation Arrows - perfectly centered vertically, flushed to edges */}
-        <button className="hidden md:grid absolute left-4 md:left-8 top-1/2 -translate-y-1/2 z-40 w-12 h-12 rounded-full place-items-center text-white bg-black/30 border border-white/20 backdrop-blur-md shadow-xl hover:bg-black/50 hover:scale-110 transition-all" onClick={prev} aria-label="Anterior">
+        <button className="hidden md:grid absolute left-4 md:left-8 top-1/2 -translate-y-1/2 z-40 w-12 h-12 rounded-full place-items-center text-white bg-black/30 border border-white/20 backdrop-blur-md shadow-xl hover:bg-black/50 hover:scale-110 transition-all pointer-events-auto" onClick={prev} aria-label="Anterior">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" className="w-5 h-5"><path d="m15 18-6-6 6-6"/></svg>
         </button>
-        <button className="hidden md:grid absolute right-4 md:right-8 top-1/2 -translate-y-1/2 z-40 w-12 h-12 rounded-full place-items-center text-white bg-black/30 border border-white/20 backdrop-blur-md shadow-xl hover:bg-black/50 hover:scale-110 transition-all" onClick={next} aria-label="Siguiente">
+        <button className="hidden md:grid absolute right-4 md:right-8 top-1/2 -translate-y-1/2 z-40 w-12 h-12 rounded-full place-items-center text-white bg-black/30 border border-white/20 backdrop-blur-md shadow-xl hover:bg-black/50 hover:scale-110 transition-all pointer-events-auto" onClick={next} aria-label="Siguiente">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" className="w-5 h-5"><path d="m9 18 6-6-6-6"/></svg>
         </button>
 
         {/* Left Copy */}
-        <div className="relative w-full md:w-[60%] h-full flex flex-col justify-center px-6 md:pl-20 anim-copy" key={`copy-${key}`}>
-          <div className="mb-6 inline-flex">
-            <span className="bg-black/90 backdrop-blur-md border border-orange-500/30 text-orange-400 font-black text-[10px] sm:text-xs md:text-sm tracking-[0.15em] uppercase px-4 py-2 rounded-full shadow-[0_4px_15px_rgba(0,0,0,0.5)]">
-              Repuestos y Autopartes Originales
-            </span>
-          </div>
-          <h1 className="text-5xl md:text-[5rem] lg:text-[6.5rem] font-black tracking-tight leading-[0.9] mb-8 text-white drop-shadow-[0_5px_15px_rgba(0,0,0,0.8)]">
-            {slide.title}
-          </h1>
-          
-          <div className="flex flex-col items-start bg-black/60 border-l-4 border-orange-500 backdrop-blur-md p-6 rounded-r-2xl shadow-[0_10px_30px_rgba(0,0,0,0.5)] max-w-2xl mb-10">
-            <h2 className="text-xl md:text-2xl lg:text-3xl font-black text-white leading-tight uppercase mb-3 drop-shadow-md">
-              {slide.sub}
-            </h2>
-            <p className="text-gray-300 font-medium text-base md:text-lg lg:text-xl leading-snug">
-              {slide.legal}
-            </p>
-          </div>
+        <div className={`relative w-full ${slide.isVideo ? 'h-full flex flex-col justify-end pb-4' : 'md:w-[60%] h-full flex flex-col justify-center px-6 md:pl-20 anim-copy'} pointer-events-auto`} key={`copy-${key}`}>
+          {!slide.isVideo && (
+            <>
+              <div className="mb-6 inline-flex">
+                <span className="bg-black/90 backdrop-blur-md border border-orange-500/30 text-orange-400 font-black text-[10px] sm:text-xs md:text-sm tracking-[0.15em] uppercase px-4 py-2 rounded-full shadow-[0_4px_15px_rgba(0,0,0,0.5)]">
+                  Repuestos y Autopartes Originales
+                </span>
+              </div>
+              <h1 className="text-5xl md:text-[5rem] lg:text-[6.5rem] font-black tracking-tight leading-[0.9] mb-8 text-white drop-shadow-[0_5px_15px_rgba(0,0,0,0.8)]">
+                {slide.title}
+              </h1>
+              
+              <div className="flex flex-col items-start bg-black/60 border-l-4 border-orange-500 backdrop-blur-md p-6 rounded-r-2xl shadow-[0_10px_30px_rgba(0,0,0,0.5)] max-w-2xl mb-10">
+                <h2 className="text-xl md:text-2xl lg:text-3xl font-black text-white leading-tight uppercase mb-3 drop-shadow-md">
+                  {slide.sub}
+                </h2>
+                <p className="text-gray-300 font-medium text-base md:text-lg lg:text-xl leading-snug">
+                  {slide.legal}
+                </p>
+              </div>
+            </>
+          )}
 
           {/* Dots below the subpill */}
-          <div className="w-full flex justify-center md:justify-start mt-4">
+          <div className={`w-full flex justify-center ${slide.isVideo ? 'mt-auto' : 'md:justify-start mt-4'}`}>
             <div className="inline-flex items-center gap-1 px-4 py-2 rounded-full bg-black/40 border border-white/10 backdrop-blur-md shadow-xl w-fit">
               {HERO_SLIDES.map((_, idx) => (
                 <button 
@@ -159,7 +197,7 @@ export default function HeroSection() {
                   aria-label={`Ver diapositiva ${idx + 1}`}
                 >
                   <div className={`transition-all duration-300 rounded-full group-hover:scale-125 ${
-                    idx === current ? `w-10 h-3 ${slide.barClass} shadow-[0_0_15px_rgba(249,115,22,0.8)]` : 'w-3 h-3 bg-white/30 group-hover:bg-white/60'
+                    idx === current ? `w-10 h-3 ${HERO_SLIDES[idx].barClass} shadow-[0_0_15px_rgba(249,115,22,0.8)]` : 'w-3 h-3 bg-white/30 group-hover:bg-white/60'
                   }`} />
                 </button>
               ))}
@@ -168,32 +206,34 @@ export default function HeroSection() {
         </div>
 
         {/* Right Stage - Product Showcase (Clean White Card) */}
-        <div className="relative w-full md:w-[40%] h-full hidden md:flex items-center justify-center anim-stage" key={`stage-${key}`}>
-          <div className="relative w-[320px] h-[440px] flex flex-col items-center justify-center p-8 rounded-[2rem] bg-white shadow-[0_30px_60px_rgba(0,0,0,0.5)] group overflow-visible">
-            
-            {/* Product Image Area (No more circles, just clean space) */}
-            <div className="relative w-full h-56 mb-8 flex items-center justify-center transition-transform duration-500 group-hover:scale-110 group-hover:-translate-y-4">
-              <img 
-                src={slide.productImg} 
-                alt={slide.title} 
-                className="w-full h-full object-contain mix-blend-multiply"
-              />
-            </div>
+        {!slide.isVideo && (
+          <div className="relative w-full md:w-[40%] h-full hidden md:flex items-center justify-center anim-stage pointer-events-auto" key={`stage-${key}`}>
+            <div className="relative w-[320px] h-[440px] flex flex-col items-center justify-center p-8 rounded-[2rem] bg-white shadow-[0_30px_60px_rgba(0,0,0,0.5)] group overflow-visible">
+              
+              {/* Product Image Area */}
+              <div className="relative w-full h-56 mb-8 flex items-center justify-center transition-transform duration-500 group-hover:scale-110 group-hover:-translate-y-4">
+                <img 
+                  src={slide.productImg} 
+                  alt={slide.title} 
+                  className="w-full h-full object-contain mix-blend-multiply"
+                />
+              </div>
 
-            <h3 className="text-gray-900 text-2xl font-black tracking-tight mb-2 text-center leading-tight">
-              {slide.label}
-            </h3>
-            <p className="text-gray-500 font-bold text-sm text-center uppercase tracking-wider">
-              Calidad Original (OEM)
-            </p>
-            
-            {/* CTA attached to the bottom of the card */}
-            <Link className="absolute -bottom-7 flex items-center gap-3 px-10 py-5 rounded-full bg-orange-500 text-white font-black text-sm uppercase tracking-wider shadow-[0_15px_30px_rgba(249,115,22,0.4)] hover:scale-105 transition-transform group/btn hover:bg-orange-600" href="/catalog">
-              VER CATÁLOGO
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" className="w-5 h-5 group-hover/btn:translate-x-1 transition-transform"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
-            </Link>
+              <h3 className="text-gray-900 text-2xl font-black tracking-tight mb-2 text-center leading-tight">
+                {slide.label}
+              </h3>
+              <p className="text-gray-500 font-bold text-sm text-center uppercase tracking-wider">
+                Calidad Original (OEM)
+              </p>
+              
+              {/* CTA attached to the bottom of the card */}
+              <Link className="absolute -bottom-7 flex items-center gap-3 px-10 py-5 rounded-full bg-orange-500 text-white font-black text-sm uppercase tracking-wider shadow-[0_15px_30px_rgba(249,115,22,0.4)] hover:scale-105 transition-transform group/btn hover:bg-orange-600" href="/catalog">
+                VER CATÁLOGO
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" className="w-5 h-5 group-hover/btn:translate-x-1 transition-transform"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+              </Link>
+            </div>
           </div>
-        </div>
+        )}
       </div>
     </section>
   );
