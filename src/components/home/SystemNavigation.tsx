@@ -37,7 +37,7 @@ const MoogLogo = () => (
 );
 const SKFLogo = () => <img src="https://upload.wikimedia.org/wikipedia/commons/b/b8/SKF_logo.svg" className="w-20 h-auto object-contain" alt="SKF" />;
 const MonroeLogo = () => (
-  <svg viewBox="0 0 80 28" className="w-20 h-auto"><text x="40" y="22" textAnchor="middle" fontFamily="sans-serif" fontSize="20" fontWeight="900" fill="#FFCC00" stroke="#000" strokeWidth="0.5">MONROE</text></svg>
+  <svg viewBox="0 0 100 28" className="w-24 h-auto"><text x="50" y="22" textAnchor="middle" fontFamily="sans-serif" fontSize="18" fontWeight="900" fill="#FFCC00" stroke="#000" strokeWidth="0.5">MONROE</text></svg>
 );
 
 const VEHICLE_BRANDS = [
