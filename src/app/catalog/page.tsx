@@ -149,6 +149,81 @@ function CatalogContent() {
               ))}
             </div>
           </Accordion>
+
+          <Accordion title="Compatibilidad Vehicular">
+            <div className="space-y-3 text-sm">
+              <div>
+                <label className="text-xs font-bold text-gray-500 mb-1 block">Marca del Vehículo</label>
+                <select className="w-full border border-gray-200 rounded p-2 outline-none focus:border-orange-500">
+                  <option>Todas las marcas</option>
+                  <option>Toyota</option>
+                  <option>Chevrolet</option>
+                  <option>Ford</option>
+                  <option>Nissan</option>
+                  <option>Mitsubishi</option>
+                </select>
+              </div>
+              <div>
+                <label className="text-xs font-bold text-gray-500 mb-1 block">Modelo</label>
+                <select className="w-full border border-gray-200 rounded p-2 outline-none focus:border-orange-500">
+                  <option>Todos los modelos</option>
+                  <option>Hilux</option>
+                  <option>L200</option>
+                  <option>F-150</option>
+                  <option>Spark</option>
+                </select>
+              </div>
+              <div>
+                <label className="text-xs font-bold text-gray-500 mb-1 block">Año</label>
+                <select className="w-full border border-gray-200 rounded p-2 outline-none focus:border-orange-500">
+                  <option>Cualquier año</option>
+                  <option>2026</option>
+                  <option>2025</option>
+                  <option>2024</option>
+                  <option>2023</option>
+                  <option>2022</option>
+                </select>
+              </div>
+            </div>
+          </Accordion>
+
+          <Accordion title="Especificaciones Técnicas">
+            <div className="space-y-2 text-sm">
+              <label className="flex items-center gap-2 text-gray-600 cursor-pointer p-1 hover:bg-gray-50 rounded">
+                <input type="checkbox" className="accent-orange-500 rounded" /> 
+                <span>OEM (Original)</span>
+              </label>
+              <label className="flex items-center gap-2 text-gray-600 cursor-pointer p-1 hover:bg-gray-50 rounded">
+                <input type="checkbox" className="accent-orange-500 rounded" /> 
+                <span>Aftermarket Premium</span>
+              </label>
+              <label className="flex items-center gap-2 text-gray-600 cursor-pointer p-1 hover:bg-gray-50 rounded">
+                <input type="checkbox" className="accent-orange-500 rounded" /> 
+                <span>Viscosidad 5W-30</span>
+              </label>
+              <label className="flex items-center gap-2 text-gray-600 cursor-pointer p-1 hover:bg-gray-50 rounded">
+                <input type="checkbox" className="accent-orange-500 rounded" /> 
+                <span>Viscosidad 10W-40</span>
+              </label>
+            </div>
+          </Accordion>
+
+          <Accordion title="Disponibilidad Logística">
+            <div className="space-y-2 text-sm">
+              <label className="flex items-center gap-2 text-gray-600 cursor-pointer p-1 hover:bg-gray-50 rounded">
+                <input type="checkbox" className="accent-orange-500 rounded" defaultChecked /> 
+                <span>En stock inmediato</span>
+              </label>
+              <label className="flex items-center gap-2 text-gray-600 cursor-pointer p-1 hover:bg-gray-50 rounded">
+                <input type="checkbox" className="accent-orange-500 rounded" defaultChecked /> 
+                <span>Envío en 24h</span>
+              </label>
+              <label className="flex items-center gap-2 text-gray-600 cursor-pointer p-1 hover:bg-gray-50 rounded">
+                <input type="checkbox" className="accent-orange-500 rounded" /> 
+                <span>Retiro en tienda</span>
+              </label>
+            </div>
+          </Accordion>
         </aside>
 
         {/* MOCK PRODUCT GRID RESULTS */}
