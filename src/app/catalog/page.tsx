@@ -50,8 +50,8 @@ function CatalogContent() {
 
       <div className="container mx-auto px-4 max-w-[1400px] py-8 flex flex-col lg:flex-row gap-8 items-start">
         
-        {/* MASSIVE SIDEBAR FILTER - hidden on mobile */}
-        <aside className="hidden lg:block w-[320px] flex-shrink-0 bg-white border border-gray-200 rounded-2xl shadow-sm p-5 sticky top-40 max-h-[calc(100vh-180px)] overflow-y-auto custom-scrollbar">
+        {/* MASSIVE SIDEBAR FILTER */}
+        <aside className="w-full lg:w-[320px] flex-shrink-0 bg-white border border-gray-200 rounded-2xl shadow-sm p-5 lg:sticky top-40 lg:max-h-[calc(100vh-180px)] overflow-y-auto custom-scrollbar mb-4 lg:mb-0">
           
           <div className="flex justify-between items-center mb-6 border-b border-gray-100 pb-4">
             <h2 className="font-black text-lg flex items-center gap-2">
