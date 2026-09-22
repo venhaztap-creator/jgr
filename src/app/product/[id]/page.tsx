@@ -97,6 +97,11 @@ export default function ProductPage({ params }: { params: Promise<{ id: string }
               <div className="flex items-center gap-3 mb-3">
                 <span className="bg-gray-900 text-white text-xs font-bold px-3 py-1 rounded-md uppercase tracking-wider">{p.brand}</span>
                 <span className="bg-blue-50 text-blue-700 border border-blue-200 text-xs font-bold px-3 py-1 rounded-md">{p.condition}</span>
+                {p.type === 'Combos Especiales' && (
+                  <span className="bg-orange-500 text-white text-xs font-black px-3 py-1 rounded-md animate-pulse">
+                    🚀 COMBO ESPECIAL
+                  </span>
+                )}
               </div>
               <h1 className="text-3xl md:text-4xl font-black text-gray-900 leading-tight mb-2">{p.title}</h1>
               <p className="text-gray-500 font-medium flex items-center gap-2">

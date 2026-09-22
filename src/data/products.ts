@@ -241,6 +241,110 @@ export const MOCK_PRODUCTS = [
     downloads: [
       { title: "Manual de Instalación Monroe OESpectrum", size: "2.4 MB" }
     ]
+  },
+  {
+    id: "combo-afinacion",
+    title: "Combo Afinación: Aceite Sintético Valvoline 5W-30 + Filtro de Aire",
+    shortName: "Combo Afinación",
+    type: "Combos Especiales",
+    position: "Mantenimiento Motor",
+    brand: "Valvoline & Multimarca",
+    application: "Multivehículo",
+    mpn: "CMB-AFIN-001",
+    oem: ["Kit Universal", "Mantenimiento Preventivo"],
+    condition: "Productos Originales Sellados",
+    
+    images: [
+      "/assets/jgr/prod-oil-ai.jpg", 
+      "https://upload.wikimedia.org/wikipedia/commons/thumb/1/15/Car_engine_air_filter.jpg/320px-Car_engine_air_filter.jpg"
+    ],
+    diagramUrl: "https://images.unsplash.com/photo-1537233267597-85b46d75c1c0?q=80&w=1200&auto=format&fit=crop", 
+
+    specs: {
+      "Contenido del Combo": "1x Aceite Valvoline (1 Qt), 1x Filtro de Aire",
+      "Viscosidad del Aceite": "5W-30 Sintético",
+      "Garantía": "10,000 Km",
+      "Peso Total (kg)": "1.25",
+    },
+
+    applications: [
+      { make: "Universal", model: "Multimarcas", years: "2010 - 2024", engine: "Varios", valves: "N/A", trans: "N/A", drive: "N/A", notes: "Aplica para mayoría de sedanes 4 cilindros" }
+    ],
+
+    crossReferences: [],
+
+    pricing: {
+      retail: 19.99,
+      b2bTiers: [
+        { min: 1, max: 9, price: 19.99, discount: "0%" },
+        { min: 10, max: 999, price: 16.50, discount: "17%" }
+      ],
+      taxInfo: "Precio rebajado - Combo"
+    },
+
+    inventory: [
+      { branch: "Centro de Distribución Nacional", stock: 85, status: "Alto" }
+    ],
+
+    crossSell: [
+      { name: "Bujías Iridium", brand: "NGK", price: 25.00, img: "/assets/jgr/prod-oil-ai.jpg" }
+    ],
+
+    downloads: [
+      { title: "Guía de Mantenimiento Preventivo", size: "1.5 MB" }
+    ]
+  },
+  {
+    id: "combo-seguridad",
+    title: "Combo Seguridad: 2x Llantas Michelin Pilot Sport 5 + Amortiguadores",
+    shortName: "Combo Seguridad",
+    type: "Combos Especiales",
+    position: "Ruedas y Suspensión",
+    brand: "Michelin & Monroe",
+    application: "Sedanes Deportivos",
+    mpn: "CMB-SEG-002",
+    oem: ["Kit Suspensión", "Llantas OEM"],
+    condition: "Nuevos OEM",
+    
+    images: [
+      "/assets/jgr/prod-tires-ai.jpg", 
+      "/assets/jgr/prod-shocks.jpg"
+    ],
+    diagramUrl: "https://images.unsplash.com/photo-1596720760455-d6d03f0b2f5b?q=80&w=1200&auto=format&fit=crop", 
+
+    specs: {
+      "Contenido del Combo": "2x Llantas 245/40 ZR18, 2x Amortiguadores Delanteros",
+      "Garantía": "1 Año o 20,000 Km",
+      "Instalación": "Incluye balanceo gratis",
+      "Peso Total (kg)": "31.7",
+    },
+
+    applications: [
+      { make: "Audi", model: "A4 / S4", years: "2015 - 2023", engine: "2.0L / 3.0L", valves: "N/A", trans: "S-Tronic", drive: "Quattro", notes: "Kit completo delantero" }
+    ],
+
+    crossReferences: [],
+
+    pricing: {
+      retail: 410.00,
+      b2bTiers: [
+        { min: 1, max: 3, price: 410.00, discount: "0%" },
+        { min: 4, max: 999, price: 385.00, discount: "6%" } 
+      ],
+      taxInfo: "Precio de Oferta Especial"
+    },
+
+    inventory: [
+      { branch: "Sede Comercial Norte", stock: 12, status: "Bajo" }
+    ],
+
+    crossSell: [
+      { name: "Líquido de Frenos DOT 4", brand: "Bosch", price: 12.00, img: "/assets/jgr/prod-oil-ai.jpg" }
+    ],
+
+    downloads: [
+      { title: "Garantía Extendida Combos", size: "2.1 MB" }
+    ]
   }
 ];
 
