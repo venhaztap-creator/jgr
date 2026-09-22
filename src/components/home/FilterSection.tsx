@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useMemo, useEffect } from 'react';
+import Link from 'next/link';
 import { MOCK_PRODUCTS } from '@/data/products';
 
 const ALL_PRODUCTS = MOCK_PRODUCTS.map(p => ({
