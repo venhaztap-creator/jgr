@@ -91,12 +91,15 @@ export default function QuickPartFinder() {
 
   return (
     <section className="finder relative overflow-hidden" id="buscar" data-od-id="vehicle-finder">
-      {/* Background tire tracks pattern */}
+      {/* Real tire background detail */}
       <div 
-        className="absolute inset-0 pointer-events-none opacity-10 mix-blend-multiply" 
+        className="absolute right-0 top-0 bottom-0 w-2/3 md:w-1/2 pointer-events-none opacity-20 mix-blend-multiply" 
         style={{
-          backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M30 5l25 15v10L30 15 5 30V20zM30 35l25 15v10L30 45 5 60V50z' fill='%23000' fill-rule='evenodd'/%3E%3C/svg%3E")`,
-          backgroundSize: '60px 60px',
+          backgroundImage: `url("/assets/jgr/prod-tires-ai.jpg")`,
+          backgroundSize: 'cover',
+          backgroundPosition: 'center',
+          maskImage: 'linear-gradient(to right, transparent, black 60%)',
+          WebkitMaskImage: 'linear-gradient(to right, transparent, black 60%)'
         }}
       ></div>
       <div className="container relative z-10">
