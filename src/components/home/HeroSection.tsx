@@ -65,12 +65,42 @@ export default function HeroSection() {
     };
   }, [current, isPaused]);
 
+  const [touchStartPos, setTouchStartPos] = useState<number | null>(null);
+  const [touchEndPos, setTouchEndPos] = useState<number | null>(null);
+  
+  const minSwipeDistance = 50;
+
+  const onTouchStart = (e: React.TouchEvent) => {
+    setTouchEndPos(null);
+    setTouchStartPos(e.targetTouches[0].clientX);
+  };
+
+  const onTouchMove = (e: React.TouchEvent) => {
+    setTouchEndPos(e.targetTouches[0].clientX);
+  };
+
+  const onTouchEnd = () => {
+    if (!touchStartPos || !touchEndPos) return;
+    const distance = touchStartPos - touchEndPos;
+    const isLeftSwipe = distance > minSwipeDistance;
+    const isRightSwipe = distance < -minSwipeDistance;
+    if (isLeftSwipe) {
+      next();
+    }
+    if (isRightSwipe) {
+      prev();
+    }
+  };
+
   return (
     <section 
       className="hero relative w-full h-[100dvh] min-h-[640px] overflow-hidden bg-black" 
       id="top" 
       data-slide={current} 
       data-od-id="hero"
+      onTouchStart={onTouchStart}
+      onTouchMove={onTouchMove}
+      onTouchEnd={onTouchEnd}
     >
       {/* Dynamic Background Image - Fully visible */}
       {HERO_SLIDES.map((s, idx) => (
@@ -91,10 +121,10 @@ export default function HeroSection() {
         onMouseLeave={() => setIsPaused(false)}
       >
         {/* Navigation Arrows - perfectly centered vertically, flushed to edges */}
-        <button className="absolute left-4 md:left-8 top-1/2 -translate-y-1/2 z-40 w-12 h-12 rounded-full grid place-items-center text-white bg-black/30 border border-white/20 backdrop-blur-md shadow-xl hover:bg-black/50 hover:scale-110 transition-all" onClick={prev} aria-label="Anterior">
+        <button className="hidden md:grid absolute left-4 md:left-8 top-1/2 -translate-y-1/2 z-40 w-12 h-12 rounded-full place-items-center text-white bg-black/30 border border-white/20 backdrop-blur-md shadow-xl hover:bg-black/50 hover:scale-110 transition-all" onClick={prev} aria-label="Anterior">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" className="w-5 h-5"><path d="m15 18-6-6 6-6"/></svg>
         </button>
-        <button className="absolute right-4 md:right-8 top-1/2 -translate-y-1/2 z-40 w-12 h-12 rounded-full grid place-items-center text-white bg-black/30 border border-white/20 backdrop-blur-md shadow-xl hover:bg-black/50 hover:scale-110 transition-all" onClick={next} aria-label="Siguiente">
+        <button className="hidden md:grid absolute right-4 md:right-8 top-1/2 -translate-y-1/2 z-40 w-12 h-12 rounded-full place-items-center text-white bg-black/30 border border-white/20 backdrop-blur-md shadow-xl hover:bg-black/50 hover:scale-110 transition-all" onClick={next} aria-label="Siguiente">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" className="w-5 h-5"><path d="m9 18 6-6-6-6"/></svg>
         </button>
 
