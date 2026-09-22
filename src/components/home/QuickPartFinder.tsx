@@ -90,8 +90,16 @@ export default function QuickPartFinder() {
   const availableModels = make ? MODELS[make] : [];
 
   return (
-    <section className="finder" id="buscar" data-od-id="vehicle-finder">
-      <div className="container">
+    <section className="finder relative overflow-hidden" id="buscar" data-od-id="vehicle-finder">
+      {/* Background tire tracks pattern */}
+      <div 
+        className="absolute inset-0 pointer-events-none opacity-10 mix-blend-multiply" 
+        style={{
+          backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M30 5l25 15v10L30 15 5 30V20zM30 35l25 15v10L30 45 5 60V50z' fill='%23000' fill-rule='evenodd'/%3E%3C/svg%3E")`,
+          backgroundSize: '60px 60px',
+        }}
+      ></div>
+      <div className="container relative z-10">
         <div className="finder__row">
           <div className="finder__lead" style={{ alignSelf: 'flex-start' }}>
             <div className="flex-shrink-0 flex items-center gap-3 bg-gray-900 rounded-[2rem] px-5 py-3.5 shadow-xl border border-white/10 mr-4 mt-1">
@@ -186,7 +194,7 @@ export default function QuickPartFinder() {
               <div className="relative flex-1">
                 <input 
                   type="text" 
-                  className="w-full h-12 px-4 bg-white border border-gray-300 rounded-lg text-gray-900 placeholder-gray-400 focus:border-blue-500 focus:ring-1 focus:ring-blue-500 outline-none transition-colors uppercase text-sm"
+                  className="w-full h-12 px-4 bg-white border border-gray-300 rounded-lg text-gray-900 placeholder-gray-400 focus:border-black focus:ring-1 focus:ring-black outline-none transition-colors uppercase text-sm"
                   placeholder="Tu VIN (17 caracteres)"
                   value={vin}
                   onChange={(e) => setVin(e.target.value.toUpperCase())}
@@ -197,7 +205,11 @@ export default function QuickPartFinder() {
                 </span>
               </div>
               <button 
-                className="h-12 px-6 bg-blue-600 hover:bg-blue-700 text-white font-bold text-sm rounded-lg transition-colors flex items-center justify-center gap-2 disabled:opacity-50 disabled:cursor-not-allowed whitespace-nowrap"
+                className={`h-12 px-6 font-bold text-sm rounded-lg transition-all flex items-center justify-center gap-2 whitespace-nowrap ${
+                  vin.length === 17 
+                    ? 'bg-black hover:bg-gray-900 text-white border-2 border-black shadow-lg transform hover:-translate-y-0.5 cursor-pointer' 
+                    : 'bg-white/80 border border-black/20 text-gray-500 cursor-not-allowed opacity-80'
+                }`}
                 disabled={vin.length < 17 || isDecoding}
                 onClick={handleDecodeVin}
               >
