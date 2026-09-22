@@ -100,9 +100,11 @@ export default function HeroSection() {
 
         {/* Left Copy */}
         <div className="relative w-full md:w-[60%] h-full flex flex-col justify-center px-6 md:pl-20 anim-copy" key={`copy-${key}`}>
-          <p className="mb-4 text-orange-400 font-bold text-sm md:text-base tracking-[0.2em] uppercase drop-shadow-md">
-            Repuestos y Autopartes Originales
-          </p>
+          <div className="mb-6 inline-flex">
+            <span className="bg-black/90 backdrop-blur-md border border-orange-500/30 text-orange-400 font-black text-[10px] sm:text-xs md:text-sm tracking-[0.15em] uppercase px-4 py-2 rounded-full shadow-[0_4px_15px_rgba(0,0,0,0.5)]">
+              Repuestos y Autopartes Originales
+            </span>
+          </div>
           <h1 className="text-5xl md:text-[5rem] lg:text-[6.5rem] font-black tracking-tight leading-[0.9] mb-8 text-white drop-shadow-[0_5px_15px_rgba(0,0,0,0.8)]">
             {slide.title}
           </h1>
