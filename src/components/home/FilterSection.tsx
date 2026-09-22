@@ -284,23 +284,23 @@ export default function FilterSection() {
             <div className={`pgrid ${viewMode === 'list' ? 'is-list' : ''}`}>
               {displayedProducts.length > 0 ? (
                 displayedProducts.map(p => (
-                  <article key={p.id} className="pcard">
+                  <Link key={p.id} href={`/product/${p.id}`} className="pcard group cursor-pointer hover:shadow-lg transition-shadow">
                     <div className="pcard__media">
                       <div className="pcard__badges">
                         {p.offer ? <span className="badge badge--dark">Oferta</span> : <span />}
                         {p.stock && <span className="badge badge--ok"><i></i>Stock</span>}
                       </div>
-                      <img src={p.img} alt={p.name} loading="lazy" className="w-full h-full object-contain mix-blend-multiply p-4" />
+                      <img src={p.img} alt={p.name} loading="lazy" className="w-full h-full object-contain mix-blend-multiply p-4 group-hover:scale-105 transition-transform" />
                     </div>
                     <div className="pcard__body">
                       <p className="pcard__cat">{p.cat}</p>
-                      <h4 className="pcard__name">{p.name}</h4>
+                      <h4 className="pcard__name group-hover:text-orange-600 transition-colors">{p.name}</h4>
                       <div className="pcard__foot">
                         <span className="pcard__brand">{p.brand}</span>
                         <span className="pcard__price num">${p.price.toFixed(2)}</span>
                       </div>
                     </div>
-                  </article>
+                  </Link>
                 ))
               ) : (
                 <div className="pempty">
