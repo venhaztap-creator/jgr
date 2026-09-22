@@ -13,8 +13,8 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "JGR Autodist | Repuestos y Accesorios para Motos",
-  description: "Encuentra los mejores aceites, filtros, bujías y lubricantes para tu moto.",
+  title: "JGR Autodist | Repuestos y Accesorios para Vehículos",
+  description: "Encuentra los mejores repuestos, aceites, filtros, bujías y lubricantes para tu vehículo o carro. Distribuidor autorizado OEM.",
 };
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
