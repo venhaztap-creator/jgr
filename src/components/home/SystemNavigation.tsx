@@ -15,55 +15,29 @@ const AUTO_SYSTEMS = [
 
 /* ─── INLINE SVG LOGOS (vector = siempre nítidos, sin API externa) ─── */
 
-const ChevroletLogo = () => (
-  <svg viewBox="0 0 80 28" className="w-12 h-auto"><path d="M0 8h22L26 0h28l4 8h22L70 20H48l-4 8H16l-4-8H0Z" fill="#D4A44C" /><path d="M6 10h18l4-8h24l4 8h18l-8 8H46l-4 8H18l-4-8H6Z" fill="#fff" /></svg>
-);
-const ToyotaLogo = () => (
-  <svg viewBox="0 0 80 52" className="w-10 h-auto"><ellipse cx="40" cy="26" rx="38" ry="24" fill="none" stroke="#1a1a1a" strokeWidth="3"/><ellipse cx="40" cy="26" rx="22" ry="14" fill="none" stroke="#1a1a1a" strokeWidth="3"/><ellipse cx="40" cy="26" rx="8" ry="24" fill="none" stroke="#1a1a1a" strokeWidth="3"/></svg>
-);
-const FordLogo = () => (
-  <svg viewBox="0 0 80 32" className="w-12 h-auto"><ellipse cx="40" cy="16" rx="38" ry="14" fill="#003478"/><text x="40" y="22" textAnchor="middle" fontFamily="serif" fontStyle="italic" fontSize="20" fontWeight="bold" fill="#fff">Ford</text></svg>
-);
-const HyundaiLogo = () => (
-  <svg viewBox="0 0 48 48" className="w-8 h-auto"><ellipse cx="24" cy="24" rx="22" ry="22" fill="none" stroke="#002C5F" strokeWidth="3"/><path d="M14 34c0-12 8-20 10-20s10 8 10 20" fill="none" stroke="#002C5F" strokeWidth="3.5"/><path d="M14 14c0 12 8 20 10 20s10-8 10-20" fill="none" stroke="#002C5F" strokeWidth="3.5"/></svg>
-);
-const CheryLogo = () => (
-  <svg viewBox="0 0 48 48" className="w-8 h-auto"><circle cx="24" cy="24" r="21" fill="none" stroke="#1a1a1a" strokeWidth="2.5"/><path d="M24 6 L14 38 L24 28 L34 38 Z" fill="none" stroke="#1a1a1a" strokeWidth="2.5" strokeLinejoin="round"/></svg>
-);
-const MitsubishiLogo = () => (
-  <svg viewBox="0 0 48 48" className="w-8 h-auto"><polygon points="24,4 16,18 32,18" fill="#E60012"/><polygon points="8,32 16,18 24,32" fill="#E60012"/><polygon points="40,32 32,18 24,32" fill="#E60012"/></svg>
-);
-const RenaultLogo = () => (
-  <svg viewBox="0 0 40 52" className="w-7 h-auto"><path d="M20 2 L38 16 L38 36 L20 50 L2 36 L2 16 Z" fill="none" stroke="#1a1a1a" strokeWidth="3"/><path d="M20 10 L30 20 L30 32 L20 42 L10 32 L10 20 Z" fill="none" stroke="#1a1a1a" strokeWidth="2.5"/></svg>
-);
-const NissanLogo = () => (
-  <svg viewBox="0 0 80 32" className="w-12 h-auto"><rect x="1" y="1" width="78" height="30" rx="15" fill="none" stroke="#1a1a1a" strokeWidth="2.5"/><line x1="1" y1="16" x2="79" y2="16" stroke="#1a1a1a" strokeWidth="2.5"/><text x="40" y="21" textAnchor="middle" fontFamily="sans-serif" fontSize="12" fontWeight="bold" letterSpacing="2" fill="#1a1a1a">NISSAN</text></svg>
-);
+const ChevroletLogo = () => <img src="https://raw.githubusercontent.com/filippofilip95/car-logos-dataset/master/logos/optimized/chevrolet.png" className="w-12 h-auto object-contain" alt="Chevrolet" />;
+const ToyotaLogo = () => <img src="https://raw.githubusercontent.com/filippofilip95/car-logos-dataset/master/logos/optimized/toyota.png" className="w-12 h-auto object-contain" alt="Toyota" />;
+const FordLogo = () => <img src="https://raw.githubusercontent.com/filippofilip95/car-logos-dataset/master/logos/optimized/ford.png" className="w-12 h-auto object-contain" alt="Ford" />;
+const HyundaiLogo = () => <img src="https://raw.githubusercontent.com/filippofilip95/car-logos-dataset/master/logos/optimized/hyundai.png" className="w-12 h-auto object-contain" alt="Hyundai" />;
+const CheryLogo = () => <img src="https://raw.githubusercontent.com/filippofilip95/car-logos-dataset/master/logos/optimized/chery.png" className="w-12 h-auto object-contain" alt="Chery" />;
+const MitsubishiLogo = () => <img src="https://raw.githubusercontent.com/filippofilip95/car-logos-dataset/master/logos/optimized/mitsubishi.png" className="w-12 h-auto object-contain" alt="Mitsubishi" />;
+const RenaultLogo = () => <img src="https://raw.githubusercontent.com/filippofilip95/car-logos-dataset/master/logos/optimized/renault.png" className="w-12 h-auto object-contain" alt="Renault" />;
+const NissanLogo = () => <img src="https://raw.githubusercontent.com/filippofilip95/car-logos-dataset/master/logos/optimized/nissan.png" className="w-12 h-auto object-contain" alt="Nissan" />;
 
 // OEM brand logos – clean typographic marks
-const BoschLogo = () => (
-  <svg viewBox="0 0 72 24" className="w-14 h-auto"><text x="36" y="19" textAnchor="middle" fontFamily="sans-serif" fontSize="20" fontWeight="900" letterSpacing="1" fill="#E20015">BOSCH</text></svg>
-);
-const DensoLogo = () => (
-  <svg viewBox="0 0 72 24" className="w-14 h-auto"><text x="36" y="19" textAnchor="middle" fontFamily="sans-serif" fontSize="18" fontWeight="800" letterSpacing="1" fill="#E60012">DENSO</text></svg>
-);
+const BoschLogo = () => <img src="https://upload.wikimedia.org/wikipedia/commons/1/16/Bosch-logo.svg" className="w-24 h-auto object-contain" alt="Bosch" />;
+const DensoLogo = () => <img src="https://upload.wikimedia.org/wikipedia/commons/a/a7/Denso_logo.svg" className="w-20 h-auto object-contain" alt="Denso" />;
 const GatesLogo = () => (
-  <svg viewBox="0 0 72 24" className="w-14 h-auto"><text x="36" y="20" textAnchor="middle" fontFamily="serif" fontSize="22" fontWeight="700" fontStyle="italic" fill="#1a1a1a">Gates</text></svg>
+  <svg viewBox="0 0 72 24" className="w-16 h-auto"><text x="36" y="20" textAnchor="middle" fontFamily="serif" fontSize="22" fontWeight="700" fontStyle="italic" fill="#E20015">Gates</text></svg>
 );
-const ACDelcoLogo = () => (
-  <svg viewBox="0 0 80 24" className="w-14 h-auto"><text x="40" y="18" textAnchor="middle" fontFamily="sans-serif" fontSize="15" fontWeight="900" letterSpacing="0.5" fill="#1a1a1a">ACDelco</text></svg>
-);
-const ValeoLogo = () => (
-  <svg viewBox="0 0 72 28" className="w-12 h-auto"><text x="36" y="22" textAnchor="middle" fontFamily="sans-serif" fontSize="22" fontWeight="700" fill="#009639">VALEO</text></svg>
-);
+const ACDelcoLogo = () => <img src="https://upload.wikimedia.org/wikipedia/commons/5/58/ACDelco_logo.svg" className="w-24 h-auto object-contain" alt="ACDelco" />;
+const ValeoLogo = () => <img src="https://upload.wikimedia.org/wikipedia/commons/2/2b/Valeo_Logo.svg" className="w-20 h-auto object-contain" alt="Valeo" />;
 const MoogLogo = () => (
-  <svg viewBox="0 0 72 28" className="w-12 h-auto"><text x="36" y="22" textAnchor="middle" fontFamily="sans-serif" fontSize="24" fontWeight="900" fill="#F7941D">MOOG</text></svg>
+  <svg viewBox="0 0 72 28" className="w-16 h-auto"><text x="36" y="22" textAnchor="middle" fontFamily="sans-serif" fontSize="24" fontWeight="900" fill="#F7941D">MOOG</text></svg>
 );
-const SKFLogo = () => (
-  <svg viewBox="0 0 56 28" className="w-10 h-auto"><text x="28" y="22" textAnchor="middle" fontFamily="sans-serif" fontSize="24" fontWeight="900" letterSpacing="2" fill="#006AB6">SKF</text></svg>
-);
+const SKFLogo = () => <img src="https://upload.wikimedia.org/wikipedia/commons/b/b8/SKF_logo.svg" className="w-20 h-auto object-contain" alt="SKF" />;
 const MonroeLogo = () => (
-  <svg viewBox="0 0 80 28" className="w-14 h-auto"><text x="40" y="22" textAnchor="middle" fontFamily="sans-serif" fontSize="20" fontWeight="900" fill="#1a1a1a">MONROE</text></svg>
+  <svg viewBox="0 0 80 28" className="w-20 h-auto"><text x="40" y="22" textAnchor="middle" fontFamily="sans-serif" fontSize="20" fontWeight="900" fill="#FFCC00" stroke="#000" strokeWidth="0.5">MONROE</text></svg>
 );
 
 const VEHICLE_BRANDS = [
@@ -159,7 +133,7 @@ export default function SystemNavigation() {
             <div className="grid grid-cols-3 sm:grid-cols-4 gap-3 md:gap-4">
               {VEHICLE_BRANDS.map(brand => (
                 <div key={brand.name} className="bg-white border border-gray-200 hover:border-blue-500 hover:shadow-[0_10px_20px_rgba(59,130,246,0.15)] transition-all rounded-2xl h-24 flex flex-col items-center justify-center cursor-pointer group transform hover:-translate-y-1">
-                  <div className="mb-2 flex items-center justify-center h-10 filter grayscale group-hover:grayscale-0 transition-all duration-300">
+                  <div className="mb-2 flex items-center justify-center h-10 transition-all duration-300">
                     <brand.Logo />
                   </div>
                   <span className="font-bold text-gray-500 group-hover:text-blue-600 transition-colors text-[10px] md:text-xs uppercase tracking-wider">{brand.name}</span>
@@ -193,7 +167,7 @@ export default function SystemNavigation() {
             <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 md:gap-4">
               {OEM_BRANDS.map(brand => (
                 <div key={brand.name} className="bg-white border border-gray-200 hover:border-orange-500 hover:shadow-[0_10px_20px_rgba(249,115,22,0.15)] transition-all rounded-2xl h-24 flex flex-col items-center justify-center cursor-pointer group transform hover:-translate-y-1">
-                  <div className="mb-1 flex items-center justify-center h-10 filter grayscale group-hover:grayscale-0 transition-all duration-300">
+                  <div className="mb-1 flex items-center justify-center h-10 transition-all duration-300">
                     <brand.Logo />
                   </div>
                 </div>

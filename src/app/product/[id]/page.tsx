@@ -376,7 +376,7 @@ export default function ProductPage({ params }: { params: Promise<{ id: string }
 
             {/* Cross Sell */}
             <div className="bg-white border border-gray-200 rounded-2xl p-6 shadow-sm">
-              <h3 className="font-black text-gray-900 mb-4">Comprados juntos habitualmente</h3>
+              <h3 className="font-black text-gray-900 mb-4">JGR te recomienda</h3>
               <p className="text-xs text-gray-500 mb-4 leading-relaxed">Piezas complementarias obligatorias recomendadas por el fabricante para mantener la garantía.</p>
               
               <div className="space-y-4">

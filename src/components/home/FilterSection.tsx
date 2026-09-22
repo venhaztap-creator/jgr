@@ -114,9 +114,37 @@ export default function FilterSection() {
   return (
     <section className="catalog" id="catalog" data-od-id="catalog">
       <div className="container container--wide">
-        <div>
-          <h2>Filtra y arma tu pedido rápido.</h2>
-          <p className="catalog__sub">Más de 2,500 repuestos disponibles en inventario.</p>
+        <div className="mb-8">
+          <h2 className="text-3xl font-bold text-gray-900 tracking-tight mb-2">Elige tu combo o arma tu pedido.</h2>
+          <p className="catalog__sub mb-6">Más de 2,500 repuestos disponibles en inventario.</p>
+          
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            {/* Combo 1 */}
+            <div className="bg-orange-50 border border-orange-200 rounded-2xl p-4 flex items-center gap-4 cursor-pointer hover:shadow-md transition-all">
+              <div className="w-20 h-20 bg-white rounded-xl border border-orange-100 flex items-center justify-center shrink-0 relative">
+                <span className="absolute -top-2 -right-2 bg-red-500 text-white text-[10px] font-bold px-2 py-0.5 rounded-full z-10">-15%</span>
+                <svg className="w-10 h-10 text-orange-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5"><path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"></path><line x1="7" y1="7" x2="7.01" y2="7"></line></svg>
+              </div>
+              <div>
+                <p className="text-xs font-bold text-orange-600 mb-1">COMBO AHORRO</p>
+                <h4 className="text-sm font-bold text-gray-900 leading-tight mb-1">Kit Afinación (Aceite 5W-30 + Filtro)</h4>
+                <p className="text-lg font-black text-gray-900">$19.99 <span className="text-xs text-gray-400 line-through font-normal">$25.00</span></p>
+              </div>
+            </div>
+            
+            {/* Combo 2 */}
+            <div className="bg-blue-50 border border-blue-200 rounded-2xl p-4 flex items-center gap-4 cursor-pointer hover:shadow-md transition-all">
+              <div className="w-20 h-20 bg-white rounded-xl border border-blue-100 flex items-center justify-center shrink-0 relative">
+                <span className="absolute -top-2 -right-2 bg-red-500 text-white text-[10px] font-bold px-2 py-0.5 rounded-full z-10">OFERTA</span>
+                <svg className="w-10 h-10 text-blue-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"></path></svg>
+              </div>
+              <div>
+                <p className="text-xs font-bold text-blue-600 mb-1">COMBO SEGURIDAD</p>
+                <h4 className="text-sm font-bold text-gray-900 leading-tight mb-1">Par de Llantas 245/40 + Válvulas</h4>
+                <p className="text-lg font-black text-gray-900">$410.00 <span className="text-xs text-gray-400 line-through font-normal">$450.00</span></p>
+              </div>
+            </div>
+          </div>
         </div>
 
         <div className="catalog__cols">

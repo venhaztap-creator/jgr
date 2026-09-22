@@ -92,7 +92,7 @@ function CatalogContent() {
         {/* MOCK PRODUCT GRID RESULTS */}
         <section className="flex-1">
           <div className="bg-white border border-gray-200 rounded-2xl p-4 flex justify-between items-center mb-6">
-            <span className="text-gray-500 font-medium">Mostrando <b>{filteredProducts.length} repuestos</b> para <span className="bg-gray-100 px-2 py-1 rounded text-gray-800">tu vehículo</span></span>
+            <span className="text-gray-500 font-medium">Mostrando <b>{filteredProducts.length} repuestos</b>{activeCategory !== 'todos' && <span> para <span className="bg-gray-100 px-2 py-1 rounded text-gray-800">{activeCategory}</span></span>}</span>
             <select className="border border-gray-200 rounded-lg p-2 outline-none text-sm focus:border-orange-500">
               <option>Relevancia</option>
               <option>Precio: Menor a Mayor</option>
@@ -101,7 +101,7 @@ function CatalogContent() {
             </select>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4">
+          <div className="grid grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-3 md:gap-4">
             {/* Mock Product Cards */}
             {filteredProducts.map(p => (
               <Link key={p.id} href={`/product/${p.id}`} className="bg-white border border-gray-200 rounded-2xl p-4 hover:shadow-xl transition-all group flex flex-col">

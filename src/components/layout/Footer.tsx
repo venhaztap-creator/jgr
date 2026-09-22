@@ -43,7 +43,7 @@ export default function Footer() {
         </div>
         <div className="foot__bottom">
           <div>
-            <p className="foot__legal">© 2026 JGR Repuestos. Todos los derechos reservados.</p>
+            <p className="foot__legal">© 2026 JGR Repuestos. Todos los derechos reservados. Hecho por Haztap</p>
           </div>
           <p className="foot__proto">Prototipo demostrativo: catálogo, precios y marcas mencionadas son referenciales.</p>
         </div>

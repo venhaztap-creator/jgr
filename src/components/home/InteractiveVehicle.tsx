@@ -48,7 +48,7 @@ export default function InteractiveVehicle() {
         <div className="relative w-full max-w-5xl mx-auto aspect-[4/3] md:aspect-[16/9]">
           {/* Background Truck Image - Rounded corners directly on the image */}
           <img 
-            src="/assets/jgr/truck-new2.jpg" 
+            src="/assets/jgr/truck-l200.webp" 
             alt="Camioneta Off-road HD" 
             className="absolute inset-0 w-full h-full object-cover object-center rounded-[2rem] md:rounded-[3rem] shadow-2xl"
           />
