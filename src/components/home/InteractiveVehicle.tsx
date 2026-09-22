@@ -45,7 +45,7 @@ export default function InteractiveVehicle() {
         </div>
 
         {/* Removed overflow-hidden from here so tooltips can break out on mobile */}
-        <div className="relative w-full max-w-5xl mx-auto aspect-[4/3] md:aspect-[16/9]">
+        <div className="relative w-full max-w-5xl mx-auto aspect-video">
           {/* Background Truck Image - Rounded corners directly on the image */}
           <img 
             src="/assets/jgr/truck-l200.webp" 
