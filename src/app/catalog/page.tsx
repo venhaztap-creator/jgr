@@ -30,12 +30,42 @@ function CatalogContent() {
   const searchParams = useSearchParams();
   const catParam = searchParams?.get('category');
   const [activeCategory, setActiveCategory] = useState(catParam || 'todos');
+  const [activeBrands, setActiveBrands] = useState<string[]>([]);
+  const [activePrices, setActivePrices] = useState<string[]>([]);
+  const [sortMode, setSortMode] = useState('Relevancia');
 
   useEffect(() => {
     if (catParam) setActiveCategory(catParam);
   }, [catParam]);
 
-  const filteredProducts = activeCategory === 'todos' ? MOCK_PRODUCTS : MOCK_PRODUCTS.filter(p => p.type === activeCategory);
+  const toggleArrayFilter = (set: React.Dispatch<React.SetStateAction<string[]>>, val: string) => {
+    set(prev => prev.includes(val) ? prev.filter(x => x !== val) : [...prev, val]);
+  };
+
+  const PRICE_MAP: Record<string, (p: number) => boolean> = {
+    'Menos de $10': p => p < 10,
+    '$10 - $30': p => p >= 10 && p <= 30,
+    '$30 - $50': p => p > 30 && p <= 50,
+    'Más de $50': p => p > 50
+  };
+
+  let filteredProducts = activeCategory === 'todos' ? MOCK_PRODUCTS : MOCK_PRODUCTS.filter(p => p.type === activeCategory);
+  
+  if (activeBrands.length > 0) {
+    filteredProducts = filteredProducts.filter(p => activeBrands.includes(p.brand));
+  }
+  
+  if (activePrices.length > 0) {
+    filteredProducts = filteredProducts.filter(p => activePrices.some(priceKey => PRICE_MAP[priceKey] && PRICE_MAP[priceKey](p.pricing.retail)));
+  }
+
+  if (sortMode === 'Precio: Menor a Mayor') {
+    filteredProducts = [...filteredProducts].sort((a, b) => a.pricing.retail - b.pricing.retail);
+  } else if (sortMode === 'Precio: Mayor a Menor') {
+    filteredProducts = [...filteredProducts].sort((a, b) => b.pricing.retail - a.pricing.retail);
+  }
+
+  const allBrands = Array.from(new Set(MOCK_PRODUCTS.map(p => p.brand)));
 
   return (
     <main className="min-h-screen bg-gray-50">
@@ -58,7 +88,7 @@ function CatalogContent() {
               <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><polygon points="22 3 2 3 10 12.46 10 19 14 21 14 12.46 22 3"/></svg>
               Filtros
             </h2>
-            <button className="text-xs font-bold text-orange-500 hover:text-orange-600" onClick={() => setActiveCategory('todos')}>Limpiar</button>
+            <button className="text-xs font-bold text-orange-500 hover:text-orange-600" onClick={() => { setActiveCategory('todos'); setActiveBrands([]); setActivePrices([]); }}>Limpiar</button>
           </div>
 
           <Accordion title="Categorías" defaultOpen={true}>
@@ -87,13 +117,45 @@ function CatalogContent() {
               ))}
             </div>
           </Accordion>
+
+          <Accordion title="Marcas">
+            <div className="space-y-2 text-sm">
+              {allBrands.map(brand => (
+                <label key={brand} className="flex items-center gap-2 text-gray-600 cursor-pointer p-1 hover:bg-gray-50 rounded">
+                  <input 
+                    type="checkbox" 
+                    className="accent-orange-500 rounded" 
+                    checked={activeBrands.includes(brand)} 
+                    onChange={() => toggleArrayFilter(setActiveBrands, brand)} 
+                  /> 
+                  <span className={activeBrands.includes(brand) ? 'font-bold text-orange-600' : ''}>{brand}</span>
+                </label>
+              ))}
+            </div>
+          </Accordion>
+
+          <Accordion title="Precio">
+            <div className="space-y-2 text-sm">
+              {Object.keys(PRICE_MAP).map(price => (
+                <label key={price} className="flex items-center gap-2 text-gray-600 cursor-pointer p-1 hover:bg-gray-50 rounded">
+                  <input 
+                    type="checkbox" 
+                    className="accent-orange-500 rounded" 
+                    checked={activePrices.includes(price)} 
+                    onChange={() => toggleArrayFilter(setActivePrices, price)} 
+                  /> 
+                  <span className={activePrices.includes(price) ? 'font-bold text-orange-600' : ''}>{price}</span>
+                </label>
+              ))}
+            </div>
+          </Accordion>
         </aside>
 
         {/* MOCK PRODUCT GRID RESULTS */}
         <section className="flex-1">
-          <div className="bg-white border border-gray-200 rounded-2xl p-4 flex justify-between items-center mb-6">
+          <div className="bg-white border border-gray-200 rounded-2xl p-4 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 mb-6">
             <span className="text-gray-500 font-medium">Mostrando <b>{filteredProducts.length} repuestos</b>{activeCategory !== 'todos' && <span> para <span className="bg-gray-100 px-2 py-1 rounded text-gray-800">{activeCategory}</span></span>}</span>
-            <select className="border border-gray-200 rounded-lg p-2 outline-none text-sm focus:border-orange-500">
+            <select className="border border-gray-200 rounded-lg p-2 outline-none text-sm focus:border-orange-500" value={sortMode} onChange={e => setSortMode(e.target.value)}>
               <option>Relevancia</option>
               <option>Precio: Menor a Mayor</option>
               <option>Precio: Mayor a Menor</option>
