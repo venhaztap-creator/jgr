@@ -44,7 +44,6 @@ export default function Footer() {
         <div className="foot__bottom">
           <div>
             <p className="foot__legal">© 2026 JGR Repuestos. Todos los derechos reservados.</p>
-            <p className="foot__credit">Fotografías de referencia: Wikimedia Commons — Jacek Halicki (CC BY 3.0), Atharv Chandel (CC BY 4.0), Cjp24 (CC BY-SA 4.0), Cameron Chapman (CC BY 2.0), DARMAS SB 9 (CC BY-SA 4.0); imágenes de dominio público de Elwood y Myke2020 vía Wikimedia Commons.</p>
           </div>
           <p className="foot__proto">Prototipo demostrativo: catálogo, precios y marcas mencionadas son referenciales.</p>
         </div>
