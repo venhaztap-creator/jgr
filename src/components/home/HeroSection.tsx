@@ -149,19 +149,21 @@ export default function HeroSection() {
           </div>
 
           {/* Dots below the subpill */}
-          <div className="inline-flex items-center gap-1 px-4 py-2 rounded-full bg-black/40 border border-white/10 backdrop-blur-md shadow-xl w-fit">
-            {HERO_SLIDES.map((_, idx) => (
-              <button 
-                key={idx}
-                onClick={() => setCurrent(idx)}
-                className="p-3 cursor-pointer group"
-                aria-label={`Ver diapositiva ${idx + 1}`}
-              >
-                <div className={`transition-all duration-300 rounded-full group-hover:scale-125 ${
-                  idx === current ? `w-10 h-3 ${slide.barClass} shadow-[0_0_15px_rgba(249,115,22,0.8)]` : 'w-3 h-3 bg-white/30 group-hover:bg-white/60'
-                }`} />
-              </button>
-            ))}
+          <div className="w-full flex justify-center md:justify-start mt-4">
+            <div className="inline-flex items-center gap-1 px-4 py-2 rounded-full bg-black/40 border border-white/10 backdrop-blur-md shadow-xl w-fit">
+              {HERO_SLIDES.map((_, idx) => (
+                <button 
+                  key={idx}
+                  onClick={() => setCurrent(idx)}
+                  className="p-3 cursor-pointer group"
+                  aria-label={`Ver diapositiva ${idx + 1}`}
+                >
+                  <div className={`transition-all duration-300 rounded-full group-hover:scale-125 ${
+                    idx === current ? `w-10 h-3 ${slide.barClass} shadow-[0_0_15px_rgba(249,115,22,0.8)]` : 'w-3 h-3 bg-white/30 group-hover:bg-white/60'
+                  }`} />
+                </button>
+              ))}
+            </div>
           </div>
         </div>
 
