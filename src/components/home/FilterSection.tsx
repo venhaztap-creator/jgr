@@ -188,24 +188,6 @@ export default function FilterSection() {
                 </div>
               </div>
 
-              {/* Marca */}
-              <div className={`fgroup ${collapsedGroups['brand'] ? 'is-collapsed' : ''}`}>
-                <h4 className="fgroup__title" role="button" tabIndex={0} onClick={() => toggleGroup('brand')} aria-expanded={!collapsedGroups['brand']}>
-                  Marca <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round"><path d="m6 9 6 6 6-6"/></svg>
-                </h4>
-                <div className="fgroup__body">
-                  <div className="fgroup__inner" id="brandFilters">
-                    {SIDEBAR_BRANDS.map(brand => (
-                      <label key={brand} className={`fcheck ${activeBrands.includes(brand) ? 'is-checked' : ''}`} onClick={(e) => { e.preventDefault(); toggleFilter(setActiveBrands, brand); }}>
-                        <span className="fcheck__box">
-                          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
-                        </span>
-                        <span className="fcheck__label">{brand}</span>
-                      </label>
-                    ))}
-                  </div>
-                </div>
-              </div>
 
               {/* Precio */}
               <div className={`fgroup ${collapsedGroups['price'] ? 'is-collapsed' : ''}`}>
