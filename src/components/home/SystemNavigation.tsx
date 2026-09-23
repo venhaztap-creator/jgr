@@ -90,14 +90,12 @@ export default function SystemNavigation() {
           <div className="flex flex-col items-center text-center max-w-3xl mx-auto mb-10">
             <div className="flex items-center gap-4 mb-6">
               {/* Premium Certified badge */}
-              <div className="w-12 h-12 rounded-2xl bg-gradient-to-br from-orange-500 to-orange-600 text-white flex items-center justify-center shadow-lg shadow-orange-500/25">
+              <div className="w-12 h-12 rounded-2xl bg-gradient-to-br from-orange-500 to-orange-600 text-white flex items-center justify-center">
                 <svg width="24" height="24" viewBox="0 0 24 24" fill="none" strokeLinecap="round" strokeLinejoin="round">
                   {/* Shield outer */}
                   <path d="M12 2L4 6v5c0 5.55 3.84 10.74 8 12 4.16-1.26 8-6.45 8-12V6L12 2z" stroke="white" strokeWidth="1.8" fill="rgba(255,255,255,0.1)"/>
                   {/* Checkmark */}
                   <path d="M8.5 12.5l2.5 2.5 5-5" stroke="white" strokeWidth="2.2"/>
-                  {/* Star sparkle accent */}
-                  <path d="M16 6l.5 1 1-.5-.5 1 1 .5-1 .5.5 1-1-.5-.5 1-.5-1-1 .5.5-1-1-.5 1-.5-.5-1 1 .5z" fill="white" opacity="0.5" stroke="none"/>
                 </svg>
               </div>
               <div className="text-left">
