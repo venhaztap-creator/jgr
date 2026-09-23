@@ -60,9 +60,9 @@ export default function InteractiveVehicles({ brandName = "OEM" }: { brandName?:
         {/* PICKUP TRUCK */}
         <div className="flex flex-col items-center">
           <h3 className="text-xl font-black text-gray-900 mb-4 bg-gray-100 px-6 py-1.5 rounded-full">Pick-ups & Ligeros</h3>
-          <div className="relative w-full aspect-[4/3] bg-gray-50 rounded-[2rem] shadow-sm border border-gray-100 overflow-hidden group">
-            <img src="/assets/jgr/truck-l200.webp" alt="Camioneta Pick-up" className="absolute inset-0 w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-700" />
-            <div className="absolute inset-0 bg-gradient-to-t from-gray-900/30 to-transparent pointer-events-none"></div>
+          <div className="relative w-full aspect-[4/3] bg-gray-50/50 rounded-[2rem] shadow-sm border border-gray-200 overflow-hidden group/container">
+            <img src="/assets/jgr/truck-l200.webp" alt="Camioneta Pick-up" className="absolute inset-0 w-full h-full object-cover object-center mix-blend-multiply group-hover/container:scale-105 transition-transform duration-700" />
+            <div className="absolute inset-0 bg-gradient-to-t from-gray-900/10 to-transparent pointer-events-none"></div>
             {renderMarkers(PICKUP_MARKERS)}
           </div>
         </div>
@@ -70,9 +70,9 @@ export default function InteractiveVehicles({ brandName = "OEM" }: { brandName?:
         {/* HEAVY DUTY TRUCK */}
         <div className="flex flex-col items-center">
           <h3 className="text-xl font-black text-gray-900 mb-4 bg-gray-100 px-6 py-1.5 rounded-full">Camiones Pesados</h3>
-          <div className="relative w-full aspect-[4/3] bg-gray-50 rounded-[2rem] shadow-sm border border-gray-100 overflow-hidden group">
-            <img src="https://images.unsplash.com/photo-1601584115197-04ecc0da31d7?q=80&w=1200&auto=format&fit=crop" alt="Camión Pesado" className="absolute inset-0 w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-700" />
-            <div className="absolute inset-0 bg-gradient-to-t from-gray-900/40 to-transparent pointer-events-none"></div>
+          <div className="relative w-full aspect-[4/3] bg-gray-900 rounded-[2rem] shadow-sm border border-gray-200 overflow-hidden group/container">
+            <img src="https://images.unsplash.com/photo-1601584115197-04ecc0da31d7?q=80&w=1200&auto=format&fit=crop" alt="Camión Pesado" className="absolute inset-0 w-full h-full object-cover object-center group-hover/container:scale-105 transition-transform duration-700 opacity-90" />
+            <div className="absolute inset-0 bg-gradient-to-t from-gray-900/60 via-transparent to-transparent pointer-events-none"></div>
             {renderMarkers(TRUCK_MARKERS)}
           </div>
         </div>
