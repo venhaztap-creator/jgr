@@ -119,42 +119,52 @@ export default function FilterSection() {
           <h2 className="text-3xl font-bold text-gray-900 tracking-tight mb-2">Elige tu combo o arma tu pedido.</h2>
           <p className="catalog__sub mb-6">Más de 2,500 repuestos disponibles en inventario.</p>
           
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             {/* Combo 1: Aceite + Filtro */}
-            <Link href="/product/combo-afinacion" className="group bg-orange-50 border border-orange-200 rounded-2xl p-4 flex items-center gap-4 hover:shadow-lg transition-all hover:-translate-y-1">
-              <div className="w-24 h-20 bg-white rounded-xl border border-orange-100 flex items-center justify-center shrink-0 relative overflow-visible">
-                <span className="absolute -top-3 -right-2 bg-red-500 text-white text-[10px] font-black px-2 py-0.5 rounded-full z-20 shadow-md transform rotate-6">-15%</span>
-                {/* Overlapping images */}
-                <div className="absolute left-2 w-12 h-12 z-10 transition-transform group-hover:scale-110 group-hover:-translate-x-1">
-                  <img src="/assets/jgr/prod-oil-ai.jpg" alt="Aceite" className="w-full h-full object-contain mix-blend-multiply drop-shadow-md" />
-                </div>
-                <div className="absolute right-2 w-12 h-12 z-0 transition-transform group-hover:scale-110 group-hover:translate-x-1">
-                  <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/15/Car_engine_air_filter.jpg/320px-Car_engine_air_filter.jpg" alt="Filtro" className="w-full h-full object-contain mix-blend-multiply opacity-90 drop-shadow-sm" />
-                </div>
+            <Link href="/product/combo-afinacion" className="group relative rounded-3xl overflow-hidden hover:shadow-2xl hover:shadow-orange-500/20 transition-all duration-300 h-56 flex flex-col justify-end p-6 border border-gray-200 hover:border-orange-500 transform hover:-translate-y-1">
+              <div 
+                className="absolute inset-0 bg-cover bg-center transform group-hover:scale-110 transition-transform duration-700"
+                style={{ backgroundImage: `url("https://images.unsplash.com/photo-1610647752706-3bb12232b3ab?q=80&w=800&auto=format&fit=crop")` }}
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-gray-900 via-gray-900/80 to-gray-900/10 group-hover:from-gray-900 group-hover:via-gray-900/90 transition-all" />
+              
+              <div className="absolute top-4 right-4 bg-orange-500 text-white text-xs font-black px-3 py-1 rounded-full uppercase tracking-wider shadow-lg shadow-orange-500/50">
+                Ahorra 15%
               </div>
-              <div>
-                <p className="text-[10px] font-black text-orange-600 mb-1 tracking-wider">COMBO AFINACIÓN</p>
-                <h4 className="text-sm font-bold text-gray-900 leading-tight mb-1 group-hover:text-orange-600 transition-colors">Aceite Sintético 5W-30 + Filtro de Aire</h4>
-                <p className="text-lg font-black text-gray-900">$29.99 <span className="text-xs text-gray-400 line-through font-normal">$36.00</span></p>
+              
+              <div className="relative z-10 w-full flex justify-between items-end">
+                <div>
+                  <p className="text-orange-400 text-[10px] font-black uppercase tracking-widest mb-1">COMBO AFINACIÓN</p>
+                  <h4 className="text-xl md:text-2xl font-black text-white leading-tight mb-1 group-hover:text-orange-400 transition-colors">Aceite Sintético 5W-30<br/>+ Filtro de Aire</h4>
+                </div>
+                <div className="text-right">
+                  <p className="text-sm text-gray-400 line-through font-bold mb-0.5">$36.00</p>
+                  <p className="text-3xl font-black text-white">$29.99</p>
+                </div>
               </div>
             </Link>
             
-            {/* Combo 2: Llantas + Frenos (or Llantas + Válvulas) */}
-            <Link href="/product/combo-seguridad" className="group bg-blue-50 border border-blue-200 rounded-2xl p-4 flex items-center gap-4 hover:shadow-lg transition-all hover:-translate-y-1">
-              <div className="w-24 h-20 bg-white rounded-xl border border-blue-100 flex items-center justify-center shrink-0 relative overflow-visible">
-                <span className="absolute -top-3 -right-2 bg-blue-600 text-white text-[10px] font-black px-2 py-0.5 rounded-full z-20 shadow-md transform -rotate-6">OFERTA</span>
-                <div className="absolute left-2 w-12 h-12 z-10 transition-transform group-hover:scale-110 group-hover:-translate-x-1">
-                  <img src="/assets/jgr/prod-tires-ai.jpg" alt="Llanta" className="w-full h-full object-contain mix-blend-multiply drop-shadow-md" />
-                </div>
-                <div className="absolute right-3 w-10 h-10 z-0 transition-transform group-hover:scale-110 group-hover:translate-x-1">
-                  {/* Small brake pad image or just a generic shock absorber */}
-                  <img src="/assets/jgr/prod-shocks.jpg" alt="Amortiguador" className="w-full h-full object-contain mix-blend-multiply opacity-90 drop-shadow-sm" />
-                </div>
+            {/* Combo 2: Llantas + Amortiguadores */}
+            <Link href="/product/combo-seguridad" className="group relative rounded-3xl overflow-hidden hover:shadow-2xl hover:shadow-blue-500/20 transition-all duration-300 h-56 flex flex-col justify-end p-6 border border-gray-200 hover:border-blue-500 transform hover:-translate-y-1">
+              <div 
+                className="absolute inset-0 bg-cover bg-center transform group-hover:scale-110 transition-transform duration-700"
+                style={{ backgroundImage: `url("https://images.unsplash.com/photo-1580273916550-e323be2ae537?q=80&w=800&auto=format&fit=crop")` }}
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-gray-900 via-gray-900/80 to-gray-900/10 group-hover:from-gray-900 group-hover:via-gray-900/90 transition-all" />
+              
+              <div className="absolute top-4 right-4 bg-blue-600 text-white text-xs font-black px-3 py-1 rounded-full uppercase tracking-wider shadow-lg shadow-blue-500/50 animate-pulse">
+                OFERTA
               </div>
-              <div>
-                <p className="text-[10px] font-black text-blue-600 mb-1 tracking-wider">COMBO SEGURIDAD</p>
-                <h4 className="text-sm font-bold text-gray-900 leading-tight mb-1 group-hover:text-blue-600 transition-colors">2x Llantas All-Terrain + Amortiguadores</h4>
-                <p className="text-lg font-black text-gray-900">$410.00 <span className="text-xs text-gray-400 line-through font-normal">$480.00</span></p>
+              
+              <div className="relative z-10 w-full flex justify-between items-end">
+                <div>
+                  <p className="text-blue-400 text-[10px] font-black uppercase tracking-widest mb-1">COMBO SEGURIDAD</p>
+                  <h4 className="text-xl md:text-2xl font-black text-white leading-tight mb-1 group-hover:text-blue-400 transition-colors">2x Llantas All-Terrain<br/>+ Amortiguadores</h4>
+                </div>
+                <div className="text-right">
+                  <p className="text-sm text-gray-400 line-through font-bold mb-0.5">$480.00</p>
+                  <p className="text-3xl font-black text-white">$410.00</p>
+                </div>
               </div>
             </Link>
           </div>
