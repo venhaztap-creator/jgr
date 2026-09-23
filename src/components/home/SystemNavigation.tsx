@@ -15,15 +15,6 @@ const AUTO_SYSTEMS = [
 
 /* ─── INLINE SVG LOGOS (vector = siempre nítidos, sin API externa) ─── */
 
-const ChevroletLogo = () => <img src="https://raw.githubusercontent.com/filippofilip95/car-logos-dataset/master/logos/optimized/chevrolet.png" className="w-12 h-auto object-contain" alt="Chevrolet" />;
-const ToyotaLogo = () => <img src="https://raw.githubusercontent.com/filippofilip95/car-logos-dataset/master/logos/optimized/toyota.png" className="w-12 h-auto object-contain" alt="Toyota" />;
-const FordLogo = () => <img src="https://raw.githubusercontent.com/filippofilip95/car-logos-dataset/master/logos/optimized/ford.png" className="w-12 h-auto object-contain" alt="Ford" />;
-const HyundaiLogo = () => <img src="https://raw.githubusercontent.com/filippofilip95/car-logos-dataset/master/logos/optimized/hyundai.png" className="w-12 h-auto object-contain" alt="Hyundai" />;
-const CheryLogo = () => <img src="https://raw.githubusercontent.com/filippofilip95/car-logos-dataset/master/logos/optimized/chery.png" className="w-12 h-auto object-contain" alt="Chery" />;
-const MitsubishiLogo = () => <img src="https://raw.githubusercontent.com/filippofilip95/car-logos-dataset/master/logos/optimized/mitsubishi.png" className="w-12 h-auto object-contain" alt="Mitsubishi" />;
-const RenaultLogo = () => <img src="https://raw.githubusercontent.com/filippofilip95/car-logos-dataset/master/logos/optimized/renault.png" className="w-12 h-auto object-contain" alt="Renault" />;
-const NissanLogo = () => <img src="https://raw.githubusercontent.com/filippofilip95/car-logos-dataset/master/logos/optimized/nissan.png" className="w-12 h-auto object-contain" alt="Nissan" />;
-
 // OEM brand logos – clean typographic marks
 const BoschLogo = () => <img src="https://upload.wikimedia.org/wikipedia/commons/1/16/Bosch-logo.svg" className="w-24 h-auto object-contain" alt="Bosch" />;
 const DensoLogo = () => <img src="https://upload.wikimedia.org/wikipedia/commons/a/a7/Denso_logo.svg" className="w-20 h-auto object-contain" alt="Denso" />;
@@ -40,16 +31,8 @@ const MonroeLogo = () => (
   <svg viewBox="0 0 100 28" className="w-24 h-auto"><text x="50" y="22" textAnchor="middle" fontFamily="sans-serif" fontSize="18" fontWeight="900" fill="#FFCC00" stroke="#000" strokeWidth="0.5">MONROE</text></svg>
 );
 
-const VEHICLE_BRANDS = [
-  { name: 'Chevrolet', Logo: ChevroletLogo },
-  { name: 'Toyota', Logo: ToyotaLogo },
-  { name: 'Ford', Logo: FordLogo },
-  { name: 'Hyundai', Logo: HyundaiLogo },
-  { name: 'Chery', Logo: CheryLogo },
-  { name: 'Mitsubishi', Logo: MitsubishiLogo },
-  { name: 'Renault', Logo: RenaultLogo },
-  { name: 'Nissan', Logo: NissanLogo },
-];
+
+
 
 const OEM_BRANDS = [
   { name: 'Bosch', Logo: BoschLogo },
@@ -101,50 +84,11 @@ export default function SystemNavigation() {
           </div>
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 md:gap-24">
+        <div className="w-full">
           
-          {/* 2. MOSAICO DE MARCAS DE VEHÍCULOS */}
-          <div>
-            <div className="flex items-center gap-4 mb-8">
-              {/* Premium Car + Truck silhouette badge */}
-              <div className="w-12 h-12 rounded-2xl bg-gradient-to-br from-blue-600 to-blue-700 text-white flex items-center justify-center shadow-lg shadow-blue-500/25">
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" strokeLinecap="round" strokeLinejoin="round">
-                  {/* Sedan body */}
-                  <path d="M3 14l2-5c.4-.8 1.2-1 2-1h10c.8 0 1.6.2 2 1l2 5" stroke="white" strokeWidth="1.8"/>
-                  {/* Roof */}
-                  <path d="M7 8l1.5-3c.3-.5.8-.8 1.3-.8h4.4c.5 0 1 .3 1.3.8L17 8" stroke="white" strokeWidth="1.8"/>
-                  {/* Body bottom */}
-                  <path d="M2 14v3c0 .6.4 1 1 1h1.5" stroke="white" strokeWidth="1.8"/>
-                  <path d="M22 14v3c0 .6-.4 1-1 1h-1.5" stroke="white" strokeWidth="1.8"/>
-                  {/* Wheels */}
-                  <circle cx="7" cy="18" r="2" stroke="white" strokeWidth="1.8" fill="rgba(255,255,255,0.15)"/>
-                  <circle cx="17" cy="18" r="2" stroke="white" strokeWidth="1.8" fill="rgba(255,255,255,0.15)"/>
-                  {/* Wheel connection */}
-                  <path d="M9 18h6" stroke="white" strokeWidth="1.5"/>
-                  {/* Window details */}
-                  <path d="M12 5v3" stroke="white" strokeWidth="1.2" opacity="0.6"/>
-                </svg>
-              </div>
-              <div>
-                <h3 className="text-2xl md:text-3xl font-black text-gray-900 tracking-tight">Vehículos más comunes</h3>
-                <p className="text-sm text-gray-400 font-medium mt-0.5">Las marcas que más atendemos</p>
-              </div>
-            </div>
-            <div className="grid grid-cols-3 sm:grid-cols-4 gap-3 md:gap-4">
-              {VEHICLE_BRANDS.map(brand => (
-                <div key={brand.name} className="bg-white border border-gray-200 hover:border-blue-500 hover:shadow-[0_10px_20px_rgba(59,130,246,0.15)] transition-all rounded-2xl h-24 flex flex-col items-center justify-center cursor-pointer group transform hover:-translate-y-1">
-                  <div className="mb-2 flex items-center justify-center h-10 transition-all duration-300">
-                    <brand.Logo />
-                  </div>
-                  <span className="font-bold text-gray-500 group-hover:text-blue-600 transition-colors text-[10px] md:text-xs uppercase tracking-wider">{brand.name}</span>
-                </div>
-              ))}
-            </div>
-          </div>
-
-          {/* 3. MARCAS DE AUTOPARTES REPRESENTADAS */}
-          <div>
-            <div className="flex items-center gap-4 mb-8">
+          {/* 2. MARCAS DE AUTOPARTES REPRESENTADAS (CARRUSEL) */}
+          <div className="flex flex-col items-center text-center max-w-3xl mx-auto mb-10">
+            <div className="flex items-center gap-4 mb-6">
               {/* Premium Certified badge */}
               <div className="w-12 h-12 rounded-2xl bg-gradient-to-br from-orange-500 to-orange-600 text-white flex items-center justify-center shadow-lg shadow-orange-500/25">
                 <svg width="24" height="24" viewBox="0 0 24 24" fill="none" strokeLinecap="round" strokeLinejoin="round">
@@ -156,21 +100,40 @@ export default function SystemNavigation() {
                   <path d="M16 6l.5 1 1-.5-.5 1 1 .5-1 .5.5 1-1-.5-.5 1-.5-1-1 .5.5-1-1-.5 1-.5-.5-1 1 .5z" fill="white" opacity="0.5" stroke="none"/>
                 </svg>
               </div>
-              <div>
+              <div className="text-left">
                 <h3 className="text-2xl md:text-3xl font-black text-gray-900 tracking-tight">Autopartes oficiales</h3>
                 <p className="text-sm text-gray-400 font-medium mt-0.5">Distribuidor autorizado OEM</p>
               </div>
             </div>
             
-            <p className="text-gray-500 mb-6 font-medium">Distribuimos las marcas de mayor prestigio y calidad de equipo original (OEM) a nivel mundial, garantizando el respaldo de fábrica.</p>
-            
-            <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 md:gap-4">
-              {OEM_BRANDS.map(brand => (
-                <div key={brand.name} className="bg-white border border-gray-200 hover:border-orange-500 hover:shadow-[0_10px_20px_rgba(249,115,22,0.15)] transition-all rounded-2xl h-24 flex flex-col items-center justify-center cursor-pointer group transform hover:-translate-y-1">
-                  <div className="mb-1 flex items-center justify-center h-10 transition-all duration-300">
+            <p className="text-gray-500 font-medium">Distribuimos las marcas de mayor prestigio y calidad de equipo original (OEM) a nivel mundial, garantizando el respaldo de fábrica.</p>
+          </div>
+
+          <style>{`
+            @keyframes scroll {
+              0% { transform: translateX(0); }
+              100% { transform: translateX(-50%); }
+            }
+            .animate-scroll {
+              animation: scroll 25s linear infinite;
+            }
+            .animate-scroll:hover {
+              animation-play-state: paused;
+            }
+          `}</style>
+          
+          <div className="relative flex overflow-x-hidden group py-4">
+            <div className="flex animate-scroll whitespace-nowrap gap-6 w-max">
+              {[...OEM_BRANDS, ...OEM_BRANDS].map((brand, idx) => (
+                <Link 
+                  href={`/marcas/${brand.name}`} 
+                  key={idx} 
+                  className="w-48 h-24 bg-white border border-gray-200 hover:border-orange-500 hover:shadow-[0_10px_20px_rgba(249,115,22,0.15)] transition-all rounded-2xl flex flex-col items-center justify-center cursor-pointer transform hover:-translate-y-1 flex-shrink-0"
+                >
+                  <div className="flex items-center justify-center h-10 transition-all duration-300">
                     <brand.Logo />
                   </div>
-                </div>
+                </Link>
               ))}
             </div>
           </div>
@@ -179,3 +142,4 @@ export default function SystemNavigation() {
     </section>
   );
 }
+
