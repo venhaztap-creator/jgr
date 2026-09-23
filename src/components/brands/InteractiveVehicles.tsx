@@ -30,18 +30,18 @@ export default function InteractiveVehicles({ brandName = "OEM" }: { brandName?:
             <span className="relative flex items-center justify-center w-3 h-3 md:w-5 md:h-5 bg-white border-[3px] border-orange-500 rounded-full shadow-[0_0_15px_rgba(249,115,22,0.9)]"></span>
           </div>
             
-          <div className={`absolute bottom-[calc(100%-16px)] left-1/2 ${translateClass} pb-4 transition-all duration-300 origin-bottom opacity-0 scale-50 pointer-events-none group-hover:opacity-100 group-hover:scale-100 group-hover:pointer-events-auto ${isActive ? '!opacity-100 !scale-100 !pointer-events-auto' : ''}`}>
-            <div className="w-[200px] md:w-56 bg-white rounded-2xl shadow-2xl p-4 relative border border-gray-100">
-              <div className="w-full h-20 md:h-28 bg-white rounded-xl mb-3 flex items-center justify-center overflow-hidden relative">
-                <img src={m.img} alt={m.title} className="w-[85%] h-[85%] object-contain mix-blend-multiply drop-shadow-[0_10px_10px_rgba(0,0,0,0.5)]" />
+          <div className={`absolute bottom-[calc(100%-8px)] left-1/2 ${translateClass} pb-2 transition-all duration-300 origin-bottom opacity-0 scale-50 pointer-events-none group-hover:opacity-100 group-hover:scale-100 group-hover:pointer-events-auto ${isActive ? '!opacity-100 !scale-100 !pointer-events-auto' : ''}`}>
+            <div className="w-[180px] md:w-48 bg-white rounded-2xl shadow-xl p-3 relative border border-gray-100">
+              <div className="w-full h-16 md:h-20 bg-white rounded-xl mb-2 flex items-center justify-center overflow-hidden relative">
+                <img src={m.img} alt={m.title} className="w-[90%] h-[90%] object-contain mix-blend-multiply drop-shadow-[0_4px_6px_rgba(0,0,0,0.1)]" />
               </div>
-              <h4 className="font-bold text-gray-900 leading-tight text-sm">{m.title}</h4>
-              <p className="text-xs text-gray-500 mt-1 mb-3 leading-snug">{m.desc}</p>
+              <h4 className="font-bold text-gray-900 leading-tight text-[13px]">{m.title}</h4>
+              <p className="text-[10px] text-gray-500 mt-0.5 mb-2 leading-snug line-clamp-2">{m.desc}</p>
               <div className="flex items-center justify-between mt-auto">
                 <span className="font-black text-orange-600 text-sm">{m.price}</span>
-                <Link href={m.link} className="text-[10px] font-bold text-white bg-black px-2 py-1 rounded-md uppercase tracking-wide hover:bg-orange-500 transition-colors">Ver</Link>
+                <Link href={m.link} className="text-[9px] font-bold text-white bg-black px-2 py-1 rounded uppercase tracking-wide hover:bg-orange-500 transition-colors">Ver</Link>
               </div>
-              <div className="absolute top-full left-1/2 -translate-x-1/2 border-8 border-transparent border-t-white"></div>
+              <div className="absolute top-full left-1/2 -translate-x-1/2 border-6 border-transparent border-t-white"></div>
             </div>
           </div>
         </div>
@@ -60,9 +60,9 @@ export default function InteractiveVehicles({ brandName = "OEM" }: { brandName?:
         {/* PICKUP TRUCK */}
         <div className="flex flex-col items-center">
           <h3 className="text-xl font-black text-gray-900 mb-4 bg-gray-100 px-6 py-1.5 rounded-full">Pick-ups & Ligeros</h3>
-          <div className="relative w-full aspect-[4/3] bg-gray-50/50 rounded-[2rem] shadow-sm border border-gray-200 overflow-hidden group/container">
-            <img src="/assets/jgr/truck-l200.webp" alt="Camioneta Pick-up" className="absolute inset-0 w-full h-full object-cover object-center mix-blend-multiply group-hover/container:scale-105 transition-transform duration-700" />
-            <div className="absolute inset-0 bg-gradient-to-t from-gray-900/10 to-transparent pointer-events-none"></div>
+          <div className="relative w-full aspect-[4/3] bg-gray-50/50 rounded-[2rem] shadow-sm border border-gray-200 group/container">
+            <img src="/assets/jgr/truck-l200.webp" alt="Camioneta Pick-up" className="absolute inset-0 w-full h-full object-contain p-4 md:p-8 mix-blend-multiply group-hover/container:scale-105 transition-transform duration-700 rounded-[2rem]" />
+            <div className="absolute inset-0 bg-gradient-to-t from-gray-900/10 to-transparent pointer-events-none rounded-[2rem]"></div>
             {renderMarkers(PICKUP_MARKERS)}
           </div>
         </div>
@@ -70,9 +70,9 @@ export default function InteractiveVehicles({ brandName = "OEM" }: { brandName?:
         {/* HEAVY DUTY TRUCK */}
         <div className="flex flex-col items-center">
           <h3 className="text-xl font-black text-gray-900 mb-4 bg-gray-100 px-6 py-1.5 rounded-full">Camiones Pesados</h3>
-          <div className="relative w-full aspect-[4/3] bg-gray-900 rounded-[2rem] shadow-sm border border-gray-200 overflow-hidden group/container">
-            <img src="https://images.unsplash.com/photo-1601584115197-04ecc0da31d7?q=80&w=1200&auto=format&fit=crop" alt="Camión Pesado" className="absolute inset-0 w-full h-full object-cover object-center group-hover/container:scale-105 transition-transform duration-700 opacity-90" />
-            <div className="absolute inset-0 bg-gradient-to-t from-gray-900/60 via-transparent to-transparent pointer-events-none"></div>
+          <div className="relative w-full aspect-[4/3] bg-gray-900 rounded-[2rem] shadow-sm border border-gray-200 group/container">
+            <img src="https://images.unsplash.com/photo-1601584115197-04ecc0da31d7?q=80&w=1200&auto=format&fit=crop" alt="Camión Pesado" className="absolute inset-0 w-full h-full object-cover object-center group-hover/container:scale-105 transition-transform duration-700 opacity-90 rounded-[2rem]" />
+            <div className="absolute inset-0 bg-gradient-to-t from-gray-900/60 via-transparent to-transparent pointer-events-none rounded-[2rem]"></div>
             {renderMarkers(TRUCK_MARKERS)}
           </div>
         </div>
