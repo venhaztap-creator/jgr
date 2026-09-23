@@ -1,10 +1,10 @@
 import Navbar from '@/components/layout/Navbar';
 import HeroSection from '@/components/home/HeroSection';
 import QuickPartFinder from '@/components/home/QuickPartFinder';
-import InteractiveVehicle from '@/components/home/InteractiveVehicle';
 import SystemNavigation from '@/components/home/SystemNavigation';
 
 import FilterSection from '@/components/home/FilterSection';
+import NewArrivals from '@/components/home/NewArrivals';
 import HighRotationProducts from '@/components/home/HighRotationProducts';
 import CorporateBenefits from '@/components/home/CorporateBenefits';
 import StoreLocations from '@/components/home/StoreLocations';
@@ -26,6 +26,9 @@ export default function Home() {
 
       {/* Catalog Filter Section matching the user's reference */}
       <FilterSection />
+
+      {/* New Arrivals Section */}
+      <NewArrivals />
 
       {/* High Rotation / Preventive Maintenance Products */}
       <HighRotationProducts />
