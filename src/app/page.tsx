@@ -21,9 +21,6 @@ export default function Home() {
       {/* Advance Auto Parts style yellow bar for vehicle selection */}
       <QuickPartFinder />
 
-      {/* Interactive Off-road Truck */}
-      <InteractiveVehicle />
-
       {/* Navigation by Automotive Systems and Brands */}
       <SystemNavigation />
 

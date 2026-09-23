@@ -19,6 +19,8 @@ const getBrandLogo = (name: string) => {
   return null;
 };
 
+import InteractiveVehicles from '@/components/brands/InteractiveVehicles';
+
 export default function MarcaPage({ params }: { params: Promise<{ brand: string }> }) {
   const resolvedParams = use(params);
   const brandName = decodeURIComponent(resolvedParams.brand);
@@ -89,6 +91,9 @@ export default function MarcaPage({ params }: { params: Promise<{ brand: string 
       </div>
 
       <div className="container mx-auto px-4 max-w-7xl py-12">
+        
+        {/* INTERACTIVE VEHICLES SECTION */}
+        <InteractiveVehicles brandName={brandName} />
         
         {/* BRAND BANNERS CAROUSEL */}
         <div className="mb-16">
