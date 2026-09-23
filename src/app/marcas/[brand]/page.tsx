@@ -4,6 +4,7 @@ import { use, useRef } from 'react';
 import Navbar from '@/components/layout/Navbar';
 import Footer from '@/components/layout/Footer';
 import { MOCK_PRODUCTS } from '@/data/products';
+import { BRAND_DATA } from '@/data/brands';
 import Link from 'next/link';
 
 // Helper to get brand logos from known brands
@@ -16,6 +17,9 @@ const getBrandLogo = (name: string) => {
   if (n.includes('skf')) return "https://upload.wikimedia.org/wikipedia/commons/b/b8/SKF_logo.svg";
   if (n.includes('michelin')) return "https://upload.wikimedia.org/wikipedia/commons/9/91/Michelin_logo.svg";
   if (n.includes('valvoline')) return "https://upload.wikimedia.org/wikipedia/commons/0/05/Valvoline_logo.svg";
+  if (n.includes('gates')) return "https://upload.wikimedia.org/wikipedia/commons/a/ab/Gates_Corporation_logo.svg";
+  if (n.includes('moog')) return "https://upload.wikimedia.org/wikipedia/commons/3/3d/Moog_Inc_logo.svg";
+  if (n.includes('monroe')) return "https://upload.wikimedia.org/wikipedia/commons/4/47/Monroe_Shocks_%26_Struts_Logo.svg";
   return null;
 };
 
@@ -37,6 +41,31 @@ export default function MarcaPage({ params }: { params: Promise<{ brand: string 
     p => p.brand.toLowerCase() === brandName.toLowerCase() || p.brand.toLowerCase().includes(brandName.toLowerCase())
   );
 
+  const brandKey = brandName.toLowerCase();
+  const brandInfo = BRAND_DATA[brandKey] || {
+    name: brandName,
+    slogan: 'Calidad y Excelencia Automotriz',
+    description: `Excelencia en ingeniería. Descubre la línea completa de repuestos y componentes ${brandName} para el máximo rendimiento de tu vehículo.`,
+    heroImage: 'https://images.unsplash.com/photo-1486262715619-67b85e0b08d3?q=80&w=2072&auto=format&fit=crop',
+    categories: ['Repuestos', 'Mantenimiento', 'Filtros'],
+    banners: [
+      {
+        tag: 'Nuevo Lanzamiento',
+        title: 'Tecnología de punta',
+        desc: 'Descubre la nueva línea de repuestos de alto rendimiento.',
+        bg: 'https://images.unsplash.com/photo-1493238792000-8113da705763?q=80&w=1000&auto=format&fit=crop',
+        color: 'orange'
+      },
+      {
+        tag: 'Garantía Total',
+        title: 'Maneja seguro, maneja tranquilo',
+        desc: 'Todos los repuestos 100% certificados de fábrica.',
+        bg: 'https://images.unsplash.com/photo-1486262715619-67b85e0b08d3?q=80&w=1000&auto=format&fit=crop',
+        color: 'blue'
+      }
+    ]
+  };
+
   const brandLogoUrl = getBrandLogo(brandName);
 
   return (
@@ -49,7 +78,7 @@ export default function MarcaPage({ params }: { params: Promise<{ brand: string 
         <div 
           className="absolute inset-0 opacity-20 mix-blend-luminosity transform scale-105"
           style={{
-            backgroundImage: `url("https://images.unsplash.com/photo-1486262715619-67b85e0b08d3?q=80&w=2072&auto=format&fit=crop")`,
+            backgroundImage: `url("${brandInfo.heroImage}")`,
             backgroundSize: 'cover',
             backgroundPosition: 'center',
           }}
@@ -59,22 +88,23 @@ export default function MarcaPage({ params }: { params: Promise<{ brand: string 
         <div className="container mx-auto px-4 max-w-7xl relative z-10">
           <div className="flex flex-col items-center text-center">
             {/* Brand Logo or Initials */}
-            <div className="w-28 h-28 md:w-40 md:h-40 bg-white rounded-3xl flex items-center justify-center shadow-2xl mb-8 border border-white/20 transform -rotate-3 hover:rotate-0 transition-transform duration-500 overflow-hidden relative group">
+            <div className="w-28 h-28 md:w-40 md:h-40 bg-white rounded-3xl flex items-center justify-center shadow-2xl mb-8 border border-white/20 transform -rotate-3 hover:rotate-0 transition-transform duration-500 overflow-hidden relative group p-4">
               <div className="absolute inset-0 bg-gradient-to-br from-white to-gray-100 opacity-0 group-hover:opacity-100 transition-opacity"></div>
               {brandLogoUrl ? (
-                <img src={brandLogoUrl} alt={brandName} className="w-3/4 h-3/4 object-contain relative z-10" />
+                <img src={brandLogoUrl} alt={brandInfo.name} className="w-full h-full object-contain relative z-10 drop-shadow-md" />
               ) : (
                 <span className="text-4xl md:text-6xl font-black text-gray-900 uppercase tracking-tighter relative z-10 bg-clip-text text-transparent bg-gradient-to-br from-gray-900 to-gray-600">
-                  {brandName.substring(0, 2)}
+                  {brandInfo.name.substring(0, 2)}
                 </span>
               )}
             </div>
             
+            <p className="text-orange-400 font-bold uppercase tracking-[0.3em] mb-2 text-sm">{brandInfo.slogan}</p>
             <h1 className="text-5xl md:text-7xl font-black text-white mb-6 uppercase tracking-tight drop-shadow-xl">
-              {brandName}
+              {brandInfo.name}
             </h1>
-            <p className="text-lg md:text-2xl text-gray-300 max-w-3xl mx-auto font-medium leading-relaxed mb-10">
-              Excelencia en ingeniería. Descubre la línea completa de <strong className="text-white">repuestos y componentes {brandName}</strong> para el máximo rendimiento de tu vehículo.
+            <p className="text-lg md:text-xl text-gray-300 max-w-3xl mx-auto font-medium leading-relaxed mb-10">
+              {brandInfo.description}
             </p>
 
             {/* Quick Stats */}
@@ -101,12 +131,12 @@ export default function MarcaPage({ params }: { params: Promise<{ brand: string 
       <div className="container mx-auto px-4 max-w-7xl py-12">
         
         {/* INTERACTIVE VEHICLES SECTION */}
-        <InteractiveVehicles brandName={brandName} />
+        <InteractiveVehicles brandName={brandInfo.name} />
         
         {/* BRAND BANNERS CAROUSEL */}
         <div className="mb-16">
           <div className="flex items-center justify-between mb-6">
-            <h2 className="text-2xl font-black text-gray-900">Novedades y Ofertas {brandName}</h2>
+            <h2 className="text-2xl font-black text-gray-900">Novedades y Ofertas {brandInfo.name}</h2>
             <div className="flex gap-2 hidden md:flex">
               <button onClick={() => scrollCarousel('left')} className="w-10 h-10 rounded-full border border-gray-200 flex items-center justify-center hover:bg-gray-100 transition-colors">
                 <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="m15 18-6-6 6-6"/></svg>
@@ -119,36 +149,18 @@ export default function MarcaPage({ params }: { params: Promise<{ brand: string 
           
           <div ref={carouselRef} className="flex overflow-x-auto gap-6 pb-4 snap-x snap-mandatory [&::-webkit-scrollbar]:hidden [-ms-overflow-style:'none'] [scrollbar-width:'none']">
             
-            <div className="min-w-[85%] md:min-w-[60%] lg:min-w-[45%] snap-center rounded-3xl overflow-hidden relative h-64 bg-gray-900 group cursor-pointer">
-               <img src="https://images.unsplash.com/photo-1493238792000-8113da705763?q=80&w=1000&auto=format&fit=crop" className="absolute inset-0 w-full h-full object-cover opacity-60 group-hover:opacity-40 group-hover:scale-105 transition-all duration-700" alt="Banner 1" />
-               <div className="absolute inset-0 bg-gradient-to-r from-gray-900 via-gray-900/60 to-transparent"></div>
-               <div className="absolute inset-0 p-8 flex flex-col justify-center">
-                 <span className="bg-orange-500 text-white text-[10px] font-black px-3 py-1 rounded-full w-max mb-3 uppercase tracking-widest">Nuevo Lanzamiento</span>
-                 <h3 className="text-2xl md:text-3xl font-black text-white mb-2 leading-tight">Tecnología <br/>de punta</h3>
-                 <p className="text-gray-300 font-medium text-sm md:text-base">Descubre la nueva línea de repuestos de alto rendimiento.</p>
-               </div>
-            </div>
-            
-            <div className="min-w-[85%] md:min-w-[60%] lg:min-w-[45%] snap-center rounded-3xl overflow-hidden relative h-64 bg-gray-900 group cursor-pointer">
-               <img src="https://images.unsplash.com/photo-1632731885566-664dc1bc0292?q=80&w=1000&auto=format&fit=crop" className="absolute inset-0 w-full h-full object-cover opacity-60 group-hover:opacity-40 group-hover:scale-105 transition-all duration-700" alt="Banner 2" />
-               <div className="absolute inset-0 bg-gradient-to-r from-blue-900 via-blue-900/60 to-transparent"></div>
-               <div className="absolute inset-0 p-8 flex flex-col justify-center">
-                 <span className="bg-blue-500 text-white text-[10px] font-black px-3 py-1 rounded-full w-max mb-3 uppercase tracking-widest">Descuento Especial</span>
-                 <h3 className="text-2xl md:text-3xl font-black text-white mb-2 leading-tight">Ahorra un 20% <br/>en frenos</h3>
-                 <p className="text-gray-300 font-medium text-sm md:text-base">Por tiempo limitado, sólo disponible en compras web.</p>
-               </div>
-            </div>
-            
-            <div className="min-w-[85%] md:min-w-[60%] lg:min-w-[45%] snap-center rounded-3xl overflow-hidden relative h-64 bg-gray-900 group cursor-pointer">
-               <img src="https://images.unsplash.com/photo-1486262715619-67b85e0b08d3?q=80&w=1000&auto=format&fit=crop" className="absolute inset-0 w-full h-full object-cover opacity-60 group-hover:opacity-40 group-hover:scale-105 transition-all duration-700" alt="Banner 3" />
-               <div className="absolute inset-0 bg-gradient-to-r from-green-900 via-green-900/60 to-transparent"></div>
-               <div className="absolute inset-0 p-8 flex flex-col justify-center">
-                 <span className="bg-green-500 text-white text-[10px] font-black px-3 py-1 rounded-full w-max mb-3 uppercase tracking-widest">Garantía Total</span>
-                 <h3 className="text-2xl md:text-3xl font-black text-white mb-2 leading-tight">Maneja seguro, <br/>maneja tranquilo</h3>
-                 <p className="text-gray-300 font-medium text-sm md:text-base">Todos los repuestos 100% certificados de fábrica.</p>
-               </div>
-            </div>
-            
+            {brandInfo.banners.map((banner: any, idx: number) => (
+              <div key={idx} className="min-w-[85%] md:min-w-[60%] lg:min-w-[45%] snap-center rounded-3xl overflow-hidden relative h-64 bg-gray-900 group cursor-pointer">
+                 <img src={banner.bg} className="absolute inset-0 w-full h-full object-cover opacity-60 group-hover:opacity-40 group-hover:scale-105 transition-all duration-700" alt={banner.title} />
+                 <div className={`absolute inset-0 bg-gradient-to-r from-${banner.color}-900 via-${banner.color}-900/60 to-transparent`}></div>
+                 <div className="absolute inset-0 p-8 flex flex-col justify-center">
+                   <span className={`bg-${banner.color}-500 text-white text-[10px] font-black px-3 py-1 rounded-full w-max mb-3 uppercase tracking-widest`}>{banner.tag}</span>
+                   <h3 className="text-2xl md:text-3xl font-black text-white mb-2 leading-tight">{banner.title}</h3>
+                   <p className="text-gray-300 font-medium text-sm md:text-base max-w-sm">{banner.desc}</p>
+                 </div>
+              </div>
+            ))}
+
           </div>
         </div>
 
