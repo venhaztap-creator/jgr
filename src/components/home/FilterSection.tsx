@@ -128,7 +128,7 @@ export default function FilterSection() {
               />
               <div className="absolute inset-0 bg-gradient-to-t from-gray-900 via-gray-900/80 to-gray-900/10 group-hover:from-gray-900 group-hover:via-gray-900/90 transition-all" />
               
-              <div className="absolute top-4 right-4 bg-orange-500 text-white text-xs font-black px-3 py-1 rounded-full uppercase tracking-wider shadow-lg shadow-orange-500/50">
+              <div className="absolute top-4 right-4 bg-orange-500 text-white text-xs font-black px-3 py-1 rounded-full uppercase tracking-wider">
                 Ahorra 15%
               </div>
               
@@ -152,7 +152,7 @@ export default function FilterSection() {
               />
               <div className="absolute inset-0 bg-gradient-to-t from-gray-900 via-gray-900/80 to-gray-900/10 group-hover:from-gray-900 group-hover:via-gray-900/90 transition-all" />
               
-              <div className="absolute top-4 right-4 bg-blue-600 text-white text-xs font-black px-3 py-1 rounded-full uppercase tracking-wider shadow-lg shadow-blue-500/50 animate-pulse">
+              <div className="absolute top-4 right-4 bg-blue-600 text-white text-xs font-black px-3 py-1 rounded-full uppercase tracking-wider">
                 OFERTA
               </div>
               
