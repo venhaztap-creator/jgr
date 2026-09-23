@@ -140,5 +140,94 @@ export const BRAND_DATA: Record<string, any> = {
         color: 'orange'
       }
     ]
+  },
+  jgrautodist: {
+    name: 'JGR Autodist',
+    slogan: 'Líder en Autopartes',
+    description: 'Nuestra marca matriz. Distribución a nivel nacional con el inventario más amplio y confiable del mercado automotriz.',
+    heroImage: 'https://images.unsplash.com/photo-1486262715619-67b85e0b08d3?q=80&w=2000&auto=format&fit=crop',
+    categories: ['Distribución General'],
+    socialLinks: {
+      instagram: 'https://www.instagram.com/jgrautodist/',
+      facebook: 'https://www.facebook.com/profile.php?id=100075960939346',
+      tiktok: 'https://www.tiktok.com/@jgrautodist',
+      youtube: 'https://www.youtube.com/@jgrautodist',
+      linkedin: 'https://www.linkedin.com/company/j-g-r-autodist-c-a/'
+    },
+    banners: [
+      {
+        tag: 'Corporativo',
+        title: 'Ventas al Mayor',
+        desc: 'Únete a nuestra red de aliados comerciales a nivel nacional.',
+        bg: 'https://images.unsplash.com/photo-1632731885566-664dc1bc0292?q=80&w=1000&auto=format&fit=crop',
+        color: 'orange'
+      }
+    ]
+  },
+  gokar: {
+    name: 'Gokar',
+    slogan: 'Rendimiento Asegurado',
+    description: 'Componentes automotrices de precisión diseñados para el mercado exigente. Gokar te ofrece la fiabilidad que necesitas en cada kilómetro.',
+    heroImage: 'https://images.unsplash.com/photo-1502877338535-766e1452684a?q=80&w=2000&auto=format&fit=crop',
+    categories: ['Repuestos', 'Mantenimiento'],
+    socialLinks: {
+      instagram: 'https://www.instagram.com/gokar.oficial/',
+      facebook: 'https://www.facebook.com/profile.php?id=61589269441858',
+      tiktok: 'https://www.tiktok.com/@gokar.oficial',
+      youtube: 'https://www.youtube.com/@Gokar.oficial-jgr'
+    },
+    banners: [
+      {
+        tag: 'Alta Calidad',
+        title: 'Repuestos Gokar',
+        desc: 'Diseñados bajo estrictos estándares internacionales de calidad.',
+        bg: 'https://images.unsplash.com/photo-1486262715619-67b85e0b08d3?q=80&w=1000&auto=format&fit=crop',
+        color: 'blue'
+      }
+    ]
+  },
+  mexlub: {
+    name: 'Mexlub',
+    slogan: 'Energía en Movimiento',
+    description: 'Lubricantes y aditivos de alta tecnología desarrollados para prolongar la vida del motor y mantener el rendimiento en cualquier condición.',
+    heroImage: 'https://images.unsplash.com/photo-1620023605809-5a9e320f34fb?q=80&w=2000&auto=format&fit=crop',
+    categories: ['Lubricantes', 'Fluidos'],
+    socialLinks: {
+      instagram: 'https://www.instagram.com/mexlub_venezuela/',
+      facebook: 'https://www.facebook.com/profile.php?id=61558989531892',
+      tiktok: 'https://www.tiktok.com/@mexlub_venezuela',
+      youtube: 'https://www.youtube.com/@MexlubVenezuela'
+    },
+    banners: [
+      {
+        tag: 'Protección',
+        title: 'Máxima Viscosidad',
+        desc: 'La protección ideal contra el desgaste prematuro del motor.',
+        bg: 'https://images.unsplash.com/photo-1632731885566-664dc1bc0292?q=80&w=1000&auto=format&fit=crop',
+        color: 'red'
+      }
+    ]
+  },
+  wolf: {
+    name: 'Wolf',
+    slogan: 'The Vital Lubricant',
+    description: 'Lubricantes europeos de vanguardia para los motores más modernos. Ingeniería avanzada enfocada en eficiencia y protección extrema.',
+    heroImage: 'https://images.unsplash.com/photo-1577969116812-321fa40a45ab?q=80&w=2000&auto=format&fit=crop',
+    categories: ['Lubricantes Sintéticos', 'Aditivos'],
+    socialLinks: {
+      instagram: 'https://www.instagram.com/wolflubes_venezuela/',
+      facebook: 'https://www.facebook.com/profile.php?id=61557666635005',
+      tiktok: 'https://www.tiktok.com/@wolflubes_venezuela',
+      youtube: 'https://www.youtube.com/@WolfLubricantsVenezuela'
+    },
+    banners: [
+      {
+        tag: 'Sintético Premium',
+        title: 'Tecnología Belga',
+        desc: 'Para aquellos que buscan lo mejor en lubricación.',
+        bg: 'https://images.unsplash.com/photo-1493238792000-8113da705763?q=80&w=1000&auto=format&fit=crop',
+        color: 'teal'
+      }
+    ]
   }
 };
