@@ -1,6 +1,6 @@
 "use client";
 
-import { use } from 'react';
+import { use, useRef } from 'react';
 import Navbar from '@/components/layout/Navbar';
 import Footer from '@/components/layout/Footer';
 import { MOCK_PRODUCTS } from '@/data/products';
@@ -24,6 +24,14 @@ import InteractiveVehicles from '@/components/brands/InteractiveVehicles';
 export default function MarcaPage({ params }: { params: Promise<{ brand: string }> }) {
   const resolvedParams = use(params);
   const brandName = decodeURIComponent(resolvedParams.brand);
+  const carouselRef = useRef<HTMLDivElement>(null);
+  
+  const scrollCarousel = (direction: 'left' | 'right') => {
+    if (carouselRef.current) {
+      const scrollAmount = carouselRef.current.clientWidth * 0.8;
+      carouselRef.current.scrollBy({ left: direction === 'left' ? -scrollAmount : scrollAmount, behavior: 'smooth' });
+    }
+  };
   
   const brandProducts = MOCK_PRODUCTS.filter(
     p => p.brand.toLowerCase() === brandName.toLowerCase() || p.brand.toLowerCase().includes(brandName.toLowerCase())
@@ -100,16 +108,16 @@ export default function MarcaPage({ params }: { params: Promise<{ brand: string 
           <div className="flex items-center justify-between mb-6">
             <h2 className="text-2xl font-black text-gray-900">Novedades y Ofertas {brandName}</h2>
             <div className="flex gap-2 hidden md:flex">
-              <button className="w-10 h-10 rounded-full border border-gray-200 flex items-center justify-center hover:bg-gray-100 transition-colors">
+              <button onClick={() => scrollCarousel('left')} className="w-10 h-10 rounded-full border border-gray-200 flex items-center justify-center hover:bg-gray-100 transition-colors">
                 <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="m15 18-6-6 6-6"/></svg>
               </button>
-              <button className="w-10 h-10 rounded-full border border-gray-200 flex items-center justify-center hover:bg-gray-100 transition-colors">
+              <button onClick={() => scrollCarousel('right')} className="w-10 h-10 rounded-full border border-gray-200 flex items-center justify-center hover:bg-gray-100 transition-colors">
                 <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="m9 18 6-6-6-6"/></svg>
               </button>
             </div>
           </div>
           
-          <div className="flex overflow-x-auto gap-6 pb-4 snap-x snap-mandatory [&::-webkit-scrollbar]:hidden [-ms-overflow-style:'none'] [scrollbar-width:'none']">
+          <div ref={carouselRef} className="flex overflow-x-auto gap-6 pb-4 snap-x snap-mandatory [&::-webkit-scrollbar]:hidden [-ms-overflow-style:'none'] [scrollbar-width:'none']">
             
             <div className="min-w-[85%] md:min-w-[60%] lg:min-w-[45%] snap-center rounded-3xl overflow-hidden relative h-64 bg-gray-900 group cursor-pointer">
                <img src="https://images.unsplash.com/photo-1493238792000-8113da705763?q=80&w=1000&auto=format&fit=crop" className="absolute inset-0 w-full h-full object-cover opacity-60 group-hover:opacity-40 group-hover:scale-105 transition-all duration-700" alt="Banner 1" />
