@@ -30,9 +30,15 @@ const SKFLogo = () => <img src="https://upload.wikimedia.org/wikipedia/commons/b
 const MonroeLogo = () => (
   <svg viewBox="0 0 100 28" className="w-24 h-auto"><text x="50" y="22" textAnchor="middle" fontFamily="sans-serif" fontSize="18" fontWeight="900" fill="#FFCC00" stroke="#000" strokeWidth="0.5">MONROE</text></svg>
 );
-
-
-
+const GokarLogo = () => (
+  <svg viewBox="0 0 100 28" className="w-24 h-auto"><text x="50" y="22" textAnchor="middle" fontFamily="sans-serif" fontSize="22" fontWeight="900" fontStyle="italic" fill="#0033A0">GOKAR</text></svg>
+);
+const MexlubLogo = () => (
+  <svg viewBox="0 0 100 28" className="w-24 h-auto"><text x="50" y="22" textAnchor="middle" fontFamily="sans-serif" fontSize="22" fontWeight="900" fill="#E31837">MEXLUB</text></svg>
+);
+const WolfLogo = () => (
+  <svg viewBox="0 0 100 28" className="w-24 h-auto"><text x="50" y="22" textAnchor="middle" fontFamily="sans-serif" fontSize="24" fontWeight="900" fontStyle="italic" fill="#000000">WOLF</text></svg>
+);
 
 const OEM_BRANDS = [
   { name: 'Bosch', Logo: BoschLogo },
@@ -43,6 +49,9 @@ const OEM_BRANDS = [
   { name: 'Moog', Logo: MoogLogo },
   { name: 'SKF', Logo: SKFLogo },
   { name: 'Monroe', Logo: MonroeLogo },
+  { name: 'Gokar', Logo: GokarLogo },
+  { name: 'Mexlub', Logo: MexlubLogo },
+  { name: 'Wolf', Logo: WolfLogo },
 ];
 
 export default function SystemNavigation() {
@@ -135,6 +144,26 @@ export default function SystemNavigation() {
               ))}
             </div>
           </div>
+
+          {/* 3. MURO DE MARCAS (Directorio Estático) */}
+          <div className="mt-8 pt-8 border-t border-gray-200/50">
+            <h4 className="text-sm font-bold text-gray-500 uppercase tracking-widest text-center mb-6">Directorio Completo de Marcas</h4>
+            <div className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-6 lg:grid-cols-8 gap-3 md:gap-4">
+              {OEM_BRANDS.map((brand, idx) => (
+                <Link 
+                  href={`/marcas/${brand.name}`} 
+                  key={`wall-${idx}`}
+                  className="group relative bg-white border border-gray-200 hover:border-gray-300 rounded-xl flex flex-col items-center justify-center aspect-[4/3] p-2 hover:shadow-sm transition-all"
+                  title={brand.name}
+                >
+                  <div className="flex items-center justify-center w-full h-full scale-[0.6] group-hover:scale-[0.7] opacity-80 group-hover:opacity-100 transition-all">
+                    <brand.Logo />
+                  </div>
+                </Link>
+              ))}
+            </div>
+          </div>
+          
         </div>
       </div>
     </section>
