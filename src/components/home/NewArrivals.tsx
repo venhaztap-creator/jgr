@@ -59,21 +59,30 @@ export default function NewArrivals() {
 
         {/* --- EDITABLE BANNER --- */}
         {PROMO_BANNER.showBanner && (
-          <div className={`w-full rounded-3xl mb-12 overflow-hidden shadow-2xl relative bg-gradient-to-r ${PROMO_BANNER.bgGradient} flex flex-col md:flex-row items-center`}>
-            <div className="p-8 md:p-12 w-full md:w-3/5 z-10 flex flex-col items-start text-white">
-              <span className="bg-white/20 text-white text-[11px] font-black px-3 py-1.5 rounded-lg uppercase tracking-widest mb-4 border border-white/20 backdrop-blur-sm">
+          <div className={`w-full rounded-[32px] mb-12 overflow-hidden shadow-xl hover:shadow-2xl transition-shadow duration-500 relative bg-gradient-to-br ${PROMO_BANNER.bgGradient}`}>
+            
+            {/* Background Image covering right side (desktop) or full background (mobile) */}
+            <div className="absolute inset-0 md:left-1/3">
+              {/* Overlay gradient to blend image into the solid background */}
+              <div className="absolute inset-0 bg-gradient-to-t md:bg-gradient-to-r from-orange-600 md:from-orange-600 via-orange-600/80 md:via-orange-600/40 to-transparent z-10"></div>
+              <img src={PROMO_BANNER.image} alt={PROMO_BANNER.title} className="w-full h-full object-cover object-center mix-blend-overlay md:mix-blend-normal opacity-40 md:opacity-100" />
+            </div>
+
+            {/* Content */}
+            <div className="relative z-20 p-8 md:p-14 md:py-16 w-full md:w-2/3 flex flex-col items-start text-white">
+              <span className="bg-white/20 text-white text-xs font-black px-4 py-2 rounded-full uppercase tracking-widest mb-6 backdrop-blur-md border border-white/30 shadow-sm">
                 {PROMO_BANNER.tag}
               </span>
-              <h3 className="text-3xl md:text-5xl font-black mb-4 leading-tight drop-shadow-sm">{PROMO_BANNER.title}</h3>
-              <p className="text-white/90 text-lg font-medium mb-8 max-w-xl leading-relaxed">{PROMO_BANNER.description}</p>
-              <Link href={PROMO_BANNER.link} className="bg-gray-900 text-white px-8 py-4 rounded-xl font-bold hover:bg-black hover:-translate-y-1 transition-all shadow-xl shadow-black/20 uppercase tracking-widest text-sm">
+              <h3 className="text-4xl md:text-5xl lg:text-6xl font-black mb-5 leading-[1.1] drop-shadow-md tracking-tight">
+                {PROMO_BANNER.title}
+              </h3>
+              <p className="text-white/95 text-lg md:text-xl font-medium mb-10 max-w-xl leading-relaxed drop-shadow-sm">
+                {PROMO_BANNER.description}
+              </p>
+              <Link href={PROMO_BANNER.link} className="bg-gray-900 text-white px-8 py-4 rounded-xl font-bold hover:bg-black hover:scale-105 active:scale-95 transition-all shadow-xl uppercase tracking-widest text-sm flex items-center gap-2 group">
                 {PROMO_BANNER.buttonText}
+                <svg className="group-hover:translate-x-1 transition-transform" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
               </Link>
-            </div>
-            
-            <div className="w-full h-full md:w-2/5 absolute md:relative bottom-0 right-0 md:inset-auto md:self-stretch flex items-center justify-center bg-white">
-              <div className="absolute inset-0 bg-gradient-to-r from-orange-600/90 md:from-orange-600 to-transparent z-10"></div>
-              <img src={PROMO_BANNER.image} alt={PROMO_BANNER.title} className="w-full h-full object-cover mix-blend-overlay md:mix-blend-normal opacity-30 md:opacity-100 object-center" />
             </div>
           </div>
         )}
