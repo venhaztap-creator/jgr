@@ -1,5 +1,13 @@
 "use client";
 
+import { useState, useEffect } from 'react';
+
+const CAROUSEL_IMAGES = [
+  '/assets/jgr/distribution_center.jpg',
+  '/assets/jgr/truck-hires.jpg',
+  '/assets/jgr/taller-mecanico.jpg'
+];
+
 const LOCATIONS = [
   {
     id: 'store-1',
@@ -22,6 +30,15 @@ const LOCATIONS = [
 ];
 
 export default function StoreLocations() {
+  const [currentImageIndex, setCurrentImageIndex] = useState(0);
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setCurrentImageIndex((prev) => (prev + 1) % CAROUSEL_IMAGES.length);
+    }, 4000);
+    return () => clearInterval(timer);
+  }, []);
+
   return (
     <section className="py-24 bg-white border-t border-gray-100" id="sedes">
       <div className="container mx-auto px-4 max-w-7xl">
@@ -36,22 +53,41 @@ export default function StoreLocations() {
 
         <div className="flex flex-col lg:flex-row gap-8">
           
-          {/* Visual Element (Map/Warehouse Illustration) */}
+          {/* Visual Element (Map/Warehouse Illustration as Carousel) */}
           <div className="lg:w-1/2 relative rounded-3xl overflow-hidden shadow-xl min-h-[400px]">
-            <img 
-              src="/assets/jgr/distribution_center.jpg" 
-              alt="Centro de Distribución" 
-              className="absolute inset-0 w-full h-full object-cover"
-            />
+            {CAROUSEL_IMAGES.map((src, idx) => (
+              <img 
+                key={src}
+                src={src} 
+                alt={`Centro de Distribución ${idx + 1}`} 
+                className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-1000 ${
+                  idx === currentImageIndex ? 'opacity-100' : 'opacity-0'
+                }`}
+              />
+            ))}
             <div className="absolute inset-0 bg-gradient-to-t from-gray-900 via-gray-900/40 to-transparent"></div>
             
-            <div className="absolute bottom-0 left-0 w-full p-8 md:p-12">
+            <div className="absolute bottom-0 left-0 w-full p-8 md:p-12 z-10">
               <div className="bg-orange-500 text-white px-4 py-2 rounded-lg inline-flex items-center gap-2 font-bold mb-4">
                 <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><rect x="1" y="3" width="15" height="13"/><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg>
                 Logística Avanzada
               </div>
               <h3 className="text-white text-3xl font-black mb-3">Más de 5,000 m² de inventario</h3>
-              <p className="text-gray-300 font-medium leading-relaxed max-w-md">Nuestro hub logístico principal garantiza un 98% de disponibilidad (fill rate) y tiempos de entrega récord en todo el territorio nacional.</p>
+              <p className="text-gray-300 font-medium leading-relaxed max-w-md mb-6">Nuestro hub logístico principal garantiza un 98% de disponibilidad (fill rate) y tiempos de entrega récord en todo el territorio nacional.</p>
+              
+              {/* Carousel Indicators */}
+              <div className="flex gap-2">
+                {CAROUSEL_IMAGES.map((_, idx) => (
+                  <button 
+                    key={idx} 
+                    onClick={() => setCurrentImageIndex(idx)}
+                    className={`h-1.5 rounded-full transition-all duration-300 ${
+                      idx === currentImageIndex ? 'w-8 bg-orange-500' : 'w-4 bg-white/50 hover:bg-white/80'
+                    }`}
+                    aria-label={`Ir a la imagen ${idx + 1}`}
+                  />
+                ))}
+              </div>
             </div>
           </div>
 
