@@ -59,41 +59,7 @@ export default function SystemNavigation() {
     <section className="py-24 bg-gray-50 border-t border-gray-200 overflow-hidden" id="navigation">
       <div className="container mx-auto px-4 max-w-7xl">
         
-        {/* 1. NAVEGACIÓN VISUAL POR SISTEMAS */}
-        <div className="mb-20">
-          <div className="text-center max-w-3xl mx-auto mb-12">
-            <h2 className="text-4xl md:text-5xl font-black tracking-tight text-gray-900 mb-4">Navegación por Sistemas</h2>
-            <p className="text-lg text-gray-500 font-medium">Encuentra exactamente lo que buscas filtrando por el sistema de tu vehículo.</p>
-          </div>
-          
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6">
-            {AUTO_SYSTEMS.map(sys => (
-              <Link 
-                key={sys.id} 
-                href={`/catalog?category=${sys.id}`}
-                className="group relative h-48 md:h-64 rounded-2xl overflow-hidden bg-gray-900 shadow-sm hover:shadow-2xl transition-all duration-300"
-              >
-                <div className="absolute inset-0">
-                  <img 
-                    src={sys.img} 
-                    alt={sys.name} 
-                    className="w-full h-full object-cover opacity-60 group-hover:opacity-40 group-hover:scale-110 transition-all duration-700"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent"></div>
-                </div>
-                <div className="absolute inset-0 p-6 flex flex-col justify-end">
-                  <h3 className="text-white font-bold text-lg md:text-xl leading-tight group-hover:text-orange-400 transition-colors">{sys.name}</h3>
-                  <div className="flex items-center text-orange-500 text-sm font-bold mt-2 opacity-0 -translate-y-2 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-300">
-                    <span>Ver repuestos</span>
-                    <svg className="ml-1 w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
-                  </div>
-                </div>
-              </Link>
-            ))}
-          </div>
-        </div>
-
-        <div className="w-full">
+        <div className="w-full mb-20">
           
           {/* 2. MARCAS DE AUTOPARTES REPRESENTADAS (CARRUSEL) */}
           <div className="flex flex-col items-center text-center max-w-3xl mx-auto mb-10">
@@ -144,6 +110,43 @@ export default function SystemNavigation() {
               ))}
             </div>
           </div>
+        </div>
+
+        {/* 1. NAVEGACIÓN VISUAL POR SISTEMAS */}
+        <div className="mb-20">
+          <div className="text-center max-w-3xl mx-auto mb-12">
+            <h2 className="text-4xl md:text-5xl font-black tracking-tight text-gray-900 mb-4">Navegación por Sistemas</h2>
+            <p className="text-lg text-gray-500 font-medium">Encuentra exactamente lo que buscas filtrando por el sistema de tu vehículo.</p>
+          </div>
+          
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6">
+            {AUTO_SYSTEMS.map(sys => (
+              <Link 
+                key={sys.id} 
+                href={`/catalog?category=${sys.id}`}
+                className="group relative h-48 md:h-64 rounded-2xl overflow-hidden bg-gray-900 shadow-sm hover:shadow-2xl transition-all duration-300"
+              >
+                <div className="absolute inset-0">
+                  <img 
+                    src={sys.img} 
+                    alt={sys.name} 
+                    className="w-full h-full object-cover opacity-60 group-hover:opacity-40 group-hover:scale-110 transition-all duration-700"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent"></div>
+                </div>
+                <div className="absolute inset-0 p-6 flex flex-col justify-end">
+                  <h3 className="text-white font-bold text-lg md:text-xl leading-tight group-hover:text-orange-400 transition-colors">{sys.name}</h3>
+                  <div className="flex items-center text-orange-500 text-sm font-bold mt-2 opacity-0 -translate-y-2 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-300">
+                    <span>Ver repuestos</span>
+                    <svg className="ml-1 w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+                  </div>
+                </div>
+              </Link>
+            ))}
+          </div>
+        </div>
+
+        <div className="w-full">
 
           {/* 3. MURO DE MARCAS (Directorio Estático) */}
           <div className="mt-8 pt-8 border-t border-gray-200/50">

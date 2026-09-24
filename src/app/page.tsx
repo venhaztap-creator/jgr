@@ -8,6 +8,7 @@ import NewArrivals from '@/components/home/NewArrivals';
 import HighRotationProducts from '@/components/home/HighRotationProducts';
 import CorporateBenefits from '@/components/home/CorporateBenefits';
 import StoreLocations from '@/components/home/StoreLocations';
+import CompanyStats from '@/components/home/CompanyStats';
 import ValueProps from '@/components/home/ValueProps';
 import Footer from '@/components/layout/Footer';
 
@@ -38,6 +39,9 @@ export default function Home() {
 
       {/* Branch Locations and Dispatch */}
       <StoreLocations />
+
+      {/* Company Statistics matching user's design */}
+      <CompanyStats />
 
       {/* Value Props */}
       <ValueProps />
