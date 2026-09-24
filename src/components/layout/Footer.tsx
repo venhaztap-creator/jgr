@@ -41,6 +41,22 @@ export default function Footer() {
             </div>
             
             <div className="mt-6">
+              <h4 className="text-sm font-bold text-gray-400 uppercase tracking-widest mb-3">Nuestras Sedes</h4>
+              <div className="flex flex-col gap-4 text-[13px] text-gray-400">
+                <div>
+                  <h5 className="font-bold text-white mb-1">📍 JGR AutoDist Caracas</h5>
+                  <p className="mb-1 leading-snug">Av. Milán, Los Ruices, Caracas, Distrito Capital.</p>
+                  <a href="https://maps.app.goo.gl/b9uM8TCFnE7t4dGU9" target="_blank" rel="noreferrer" className="text-[#F35F0F] hover:text-white hover:underline transition-colors font-medium">Ver ubicación</a>
+                </div>
+                <div>
+                  <h5 className="font-bold text-white mb-1">📍 JGR AutoDist Valencia</h5>
+                  <p className="mb-1 leading-snug">Centro Empresarial DANCAN, Galpón 10, San Diego, Carabobo, a 500 m del distribuidor Divenca.</p>
+                  <a href="https://maps.app.goo.gl/6F3QbXB2Mo8bGibs5" target="_blank" rel="noreferrer" className="text-[#F35F0F] hover:text-white hover:underline transition-colors font-medium">Ver ubicación</a>
+                </div>
+              </div>
+            </div>
+
+            <div className="mt-6">
               <h4 className="text-sm font-bold text-gray-400 uppercase tracking-widest mb-3">Síguenos</h4>
               <div className="flex gap-4">
                 <a href="https://www.instagram.com/jgrautodist/" target="_blank" rel="noreferrer" className="text-gray-400 hover:text-white transition-colors" title="Instagram">
