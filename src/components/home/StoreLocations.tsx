@@ -3,27 +3,21 @@
 const LOCATIONS = [
   {
     id: 'store-1',
-    name: 'Sucursal Principal',
-    address: 'Av. Las Américas, Zona Industrial, Galpón 4',
+    name: 'JGR AutoDist Caracas',
+    address: 'Av. Milán, Los Ruices',
     city: 'Caracas, Distrito Capital',
     phone: '+58 212-555-0192',
-    features: ['Retiro en Tienda (Click & Collect)', 'Ventas al Mayor', 'Despacho Regional'],
+    mapUrl: 'https://maps.app.goo.gl/b9uM8TCFnE7t4dGU9',
+    features: ['Retiro en Tienda (Click & Collect)', 'Despacho Regional'],
   },
   {
     id: 'store-2',
-    name: 'Sede Comercial Norte',
-    address: 'Av. Francisco de Miranda, C.C. Automotriz Nivel PB',
-    city: 'Miranda',
-    phone: '+58 212-555-0193',
-    features: ['Retiro en Tienda', 'Asesoría Técnica'],
-  },
-  {
-    id: 'store-3',
-    name: 'Centro de Distribución Occidente',
-    address: 'Av. Pedro Lucas Urribarrí, Sector La Cañada',
-    city: 'Maracaibo, Zulia',
-    phone: '+58 261-555-0194',
-    features: ['Despacho Regional a Flotas', 'Despachos Nacionales'],
+    name: 'JGR AutoDist Valencia',
+    address: 'Centro Empresarial DANCAN, Galpón 10, a 500 m del distribuidor Divenca',
+    city: 'San Diego, Carabobo',
+    phone: '+58 412-555-0100',
+    mapUrl: 'https://maps.app.goo.gl/6F3QbXB2Mo8bGibs5',
+    features: ['Ventas al Mayor', 'Despachos Nacionales'],
   }
 ];
 
@@ -64,7 +58,7 @@ export default function StoreLocations() {
           {/* Locations List */}
           <div className="lg:w-1/2 flex flex-col gap-4">
             {LOCATIONS.map((loc, idx) => (
-              <div key={loc.id} className="bg-white border border-gray-200 rounded-2xl p-6 md:p-8 hover:border-orange-500 hover:shadow-lg transition-all duration-300 group cursor-pointer relative overflow-hidden">
+              <a key={loc.id} href={loc.mapUrl} target="_blank" rel="noreferrer" className="bg-white border border-gray-200 rounded-2xl p-6 md:p-8 hover:border-orange-500 hover:shadow-lg transition-all duration-300 group cursor-pointer relative overflow-hidden block">
                 {/* Accent Line */}
                 <div className="absolute left-0 top-0 bottom-0 w-1 bg-gray-200 group-hover:bg-orange-500 transition-colors"></div>
                 
@@ -93,7 +87,7 @@ export default function StoreLocations() {
                     </span>
                   ))}
                 </div>
-              </div>
+              </a>
             ))}
           </div>
         </div>
