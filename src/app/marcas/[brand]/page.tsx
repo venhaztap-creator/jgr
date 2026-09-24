@@ -1,6 +1,6 @@
 "use client";
 
-import { use, useRef } from 'react';
+import { use, useRef, useState } from 'react';
 import Navbar from '@/components/layout/Navbar';
 import Footer from '@/components/layout/Footer';
 import { MOCK_PRODUCTS } from '@/data/products';
@@ -29,6 +29,7 @@ export default function MarcaPage({ params }: { params: Promise<{ brand: string 
   const resolvedParams = use(params);
   const brandName = decodeURIComponent(resolvedParams.brand);
   const carouselRef = useRef<HTMLDivElement>(null);
+  const [showFilters, setShowFilters] = useState(false);
   
   const scrollCarousel = (direction: 'left' | 'right') => {
     if (carouselRef.current) {
@@ -73,7 +74,7 @@ export default function MarcaPage({ params }: { params: Promise<{ brand: string 
       <Navbar />
 
       {/* HERO SECTION - Clean Premium Look */}
-      <div className="relative pt-32 pb-20 md:pt-40 md:pb-32 bg-gray-900 overflow-hidden">
+      <div className="relative pt-24 pb-12 md:pt-40 md:pb-32 bg-gray-900 overflow-hidden">
         {/* Background Image */}
         <div 
           className="absolute inset-0 opacity-20 mix-blend-luminosity transform scale-105"
@@ -88,27 +89,27 @@ export default function MarcaPage({ params }: { params: Promise<{ brand: string 
         <div className="container mx-auto px-4 max-w-7xl relative z-10">
           <div className="flex flex-col items-center text-center">
             {/* Brand Logo or Initials */}
-            <div className="w-28 h-28 md:w-40 md:h-40 bg-white rounded-3xl flex items-center justify-center shadow-2xl mb-8 border border-white/20 transform -rotate-3 hover:rotate-0 transition-transform duration-500 overflow-hidden relative group p-4">
+            <div className="w-24 h-24 md:w-40 md:h-40 bg-white rounded-3xl flex items-center justify-center shadow-2xl mb-6 md:mb-8 border border-white/20 transform -rotate-3 hover:rotate-0 transition-transform duration-500 overflow-hidden relative group p-4">
               <div className="absolute inset-0 bg-gradient-to-br from-white to-gray-100 opacity-0 group-hover:opacity-100 transition-opacity"></div>
               {brandLogoUrl ? (
                 <img src={brandLogoUrl} alt={brandInfo.name} className="w-full h-full object-contain relative z-10 drop-shadow-md" />
               ) : (
-                <span className="text-4xl md:text-6xl font-black text-gray-900 uppercase tracking-tighter relative z-10 bg-clip-text text-transparent bg-gradient-to-br from-gray-900 to-gray-600">
+                <span className="text-3xl md:text-6xl font-black text-gray-900 uppercase tracking-tighter relative z-10 bg-clip-text text-transparent bg-gradient-to-br from-gray-900 to-gray-600">
                   {brandInfo.name.substring(0, 2)}
                 </span>
               )}
             </div>
             
-            <p className="text-orange-400 font-bold uppercase tracking-[0.3em] mb-2 text-sm">{brandInfo.slogan}</p>
-            <h1 className="text-5xl md:text-7xl font-black text-white mb-6 uppercase tracking-tight drop-shadow-xl">
+            <p className="text-orange-400 font-bold uppercase tracking-[0.2em] md:tracking-[0.3em] mb-2 text-xs md:text-sm">{brandInfo.slogan}</p>
+            <h1 className="text-4xl md:text-7xl font-black text-white mb-4 md:mb-6 uppercase tracking-tight drop-shadow-xl">
               {brandInfo.name}
             </h1>
-            <p className="text-lg md:text-xl text-gray-300 max-w-3xl mx-auto font-medium leading-relaxed mb-10">
+            <p className="text-base md:text-xl text-gray-300 max-w-3xl mx-auto font-medium leading-relaxed mb-8 md:mb-10">
               {brandInfo.description}
             </p>
 
             {/* Quick Stats */}
-            <div className="flex flex-wrap justify-center gap-6 md:gap-12 text-white/80">
+            <div className="flex flex-row justify-center gap-4 md:gap-12 text-white/80">
               <div className="flex flex-col items-center">
                 <span className="text-3xl font-black text-white">{brandProducts.length > 0 ? `+${brandProducts.length}` : 'OEM'}</span>
                 <span className="text-xs uppercase tracking-widest font-bold mt-1 opacity-70">Productos</span>
@@ -206,8 +207,19 @@ export default function MarcaPage({ params }: { params: Promise<{ brand: string 
 
         <div className="flex flex-col lg:flex-row gap-8">
           
+          {/* Mobile Filter Toggle Button */}
+          <div className="lg:hidden">
+            <button 
+              onClick={() => setShowFilters(!showFilters)}
+              className="w-full bg-white border border-gray-200 text-gray-900 font-bold py-3 px-4 rounded-xl flex items-center justify-between shadow-sm"
+            >
+              <span>Filtros y Categorías</span>
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className={`transform transition-transform duration-300 ${showFilters ? 'rotate-180' : ''}`}><polyline points="6 9 12 15 18 9"/></svg>
+            </button>
+          </div>
+
           {/* Advanced Filtering Sidebar */}
-          <aside className="w-full lg:w-1/4 shrink-0">
+          <aside className={`w-full lg:w-1/4 shrink-0 ${showFilters ? 'block' : 'hidden'} lg:block`}>
             <div className="bg-white rounded-3xl border border-gray-200 p-6 sticky top-24 shadow-sm">
               <div className="flex items-center justify-between mb-6">
                 <h3 className="text-xl font-black text-gray-900">Filtros</h3>
@@ -259,12 +271,17 @@ export default function MarcaPage({ params }: { params: Promise<{ brand: string 
           {/* Products Grid */}
           <div className="w-full lg:w-3/4">
             
-            <div className="flex flex-col sm:flex-row items-center justify-between mb-6 bg-white p-4 rounded-2xl border border-gray-200">
-              <span className="text-sm font-bold text-gray-500 mb-4 sm:mb-0">Mostrando <span className="text-gray-900">{brandProducts.length}</span> resultados</span>
+            <div className="flex flex-row items-center justify-between mb-6 bg-white p-3 md:p-4 rounded-2xl border border-gray-200">
+              <span className="text-xs md:text-sm font-bold text-gray-500">
+                <span className="hidden sm:inline">Mostrando </span>
+                <span className="text-gray-900">{brandProducts.length}</span> 
+                <span className="hidden sm:inline"> resultados</span>
+                <span className="sm:hidden"> res.</span>
+              </span>
               
-              <div className="flex items-center gap-4">
+              <div className="flex items-center gap-2 md:gap-4">
                 <span className="text-sm font-bold text-gray-500 hidden sm:block">Ordenar por:</span>
-                <select className="bg-gray-50 border border-gray-200 text-gray-900 text-sm font-bold rounded-xl focus:ring-orange-500 focus:border-orange-500 block p-2.5 outline-none cursor-pointer">
+                <select className="bg-gray-50 border border-gray-200 text-gray-900 text-xs md:text-sm font-bold rounded-xl focus:ring-orange-500 focus:border-orange-500 block p-2 md:p-2.5 outline-none cursor-pointer">
                   <option>Relevancia</option>
                   <option>Menor Precio</option>
                   <option>Mayor Precio</option>
