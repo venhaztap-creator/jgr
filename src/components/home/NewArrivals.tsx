@@ -16,7 +16,14 @@ export const PROMO_BANNER = {
   buttonText: "Comprar ahora",
   link: "/catalog?category=suspension",
   image: "/assets/jgr/prod-shocks.jpg",
-  bgGradient: "from-orange-500 to-orange-600", // Ejemplo: from-blue-600 to-blue-800
+  
+  // Clases de Tailwind para el degradado (asegura una mezcla perfecta sin cortes)
+  // En escritorio, el color sólido cubre el 50% izquierdo y se desvanece hacia la derecha
+  desktopGradient: "md:bg-gradient-to-r md:from-orange-600 md:from-[45%] md:via-orange-600/80 md:to-transparent",
+  // En móviles, el color sólido cubre abajo y se desvanece hacia arriba
+  mobileGradient: "bg-gradient-to-t from-orange-600 from-[55%] via-orange-600/80 to-transparent",
+  // Color de fondo de respaldo
+  bgColor: "bg-orange-600",
 };
 
 export default function NewArrivals() {
@@ -59,17 +66,18 @@ export default function NewArrivals() {
 
         {/* --- EDITABLE BANNER --- */}
         {PROMO_BANNER.showBanner && (
-          <div className={`w-full rounded-[32px] mb-12 overflow-hidden shadow-xl hover:shadow-2xl transition-shadow duration-500 relative bg-gradient-to-br ${PROMO_BANNER.bgGradient}`}>
+          <div className={`w-full rounded-[32px] mb-12 overflow-hidden shadow-xl hover:shadow-2xl transition-shadow duration-500 relative ${PROMO_BANNER.bgColor}`}>
             
-            {/* Background Image covering right side (desktop) or full background (mobile) */}
-            <div className="absolute inset-0 md:left-1/3">
-              {/* Overlay gradient to blend image into the solid background */}
-              <div className="absolute inset-0 bg-gradient-to-t md:bg-gradient-to-r from-orange-600 md:from-orange-600 via-orange-600/80 md:via-orange-600/40 to-transparent z-10"></div>
-              <img src={PROMO_BANNER.image} alt={PROMO_BANNER.title} className="w-full h-full object-cover object-center mix-blend-overlay md:mix-blend-normal opacity-40 md:opacity-100" />
+            {/* Background Image covering full width */}
+            <div className="absolute inset-0">
+              <img src={PROMO_BANNER.image} alt={PROMO_BANNER.title} className="w-full h-full object-cover object-center" />
             </div>
 
+            {/* Overlay gradient to blend image into the solid background seamlessly */}
+            <div className={`absolute inset-0 ${PROMO_BANNER.desktopGradient} ${PROMO_BANNER.mobileGradient} z-10`}></div>
+
             {/* Content */}
-            <div className="relative z-20 p-8 md:p-14 md:py-16 w-full md:w-2/3 flex flex-col items-start text-white">
+            <div className="relative z-20 p-8 md:p-14 md:py-16 w-full md:w-[60%] flex flex-col items-start text-white">
               <span className="bg-white/20 text-white text-xs font-black px-4 py-2 rounded-full uppercase tracking-widest mb-6 backdrop-blur-md border border-white/30 shadow-sm">
                 {PROMO_BANNER.tag}
               </span>
