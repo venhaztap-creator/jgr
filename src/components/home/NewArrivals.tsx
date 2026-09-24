@@ -4,6 +4,21 @@ import { useRef } from 'react';
 import Link from 'next/link';
 import { MOCK_PRODUCTS } from '@/data/products';
 
+// ==========================================
+// CONFIGURACIÓN DEL BANNER PROMOCIONAL
+// Puedes editar los textos, enlaces e imagen aquí:
+// ==========================================
+export const PROMO_BANNER = {
+  showBanner: true, // Cambia a false para ocultar el banner
+  tag: "OFERTA ESPECIAL",
+  title: "Aprovecha el 20% de Descuento",
+  description: "En toda la línea de suspensión y frenos. ¡Prepárate para la carretera con repuestos originales de la más alta calidad!",
+  buttonText: "Comprar ahora",
+  link: "/catalog?category=suspension",
+  image: "/assets/jgr/prod-shocks.jpg",
+  bgGradient: "from-orange-500 to-orange-600", // Ejemplo: from-blue-600 to-blue-800
+};
+
 export default function NewArrivals() {
   const scrollRef = useRef<HTMLDivElement>(null);
   
@@ -41,6 +56,27 @@ export default function NewArrivals() {
             </button>
           </div>
         </div>
+
+        {/* --- EDITABLE BANNER --- */}
+        {PROMO_BANNER.showBanner && (
+          <div className={`w-full rounded-3xl mb-12 overflow-hidden shadow-2xl relative bg-gradient-to-r ${PROMO_BANNER.bgGradient} flex flex-col md:flex-row items-center`}>
+            <div className="p-8 md:p-12 w-full md:w-3/5 z-10 flex flex-col items-start text-white">
+              <span className="bg-white/20 text-white text-[11px] font-black px-3 py-1.5 rounded-lg uppercase tracking-widest mb-4 border border-white/20 backdrop-blur-sm">
+                {PROMO_BANNER.tag}
+              </span>
+              <h3 className="text-3xl md:text-5xl font-black mb-4 leading-tight drop-shadow-sm">{PROMO_BANNER.title}</h3>
+              <p className="text-white/90 text-lg font-medium mb-8 max-w-xl leading-relaxed">{PROMO_BANNER.description}</p>
+              <Link href={PROMO_BANNER.link} className="bg-gray-900 text-white px-8 py-4 rounded-xl font-bold hover:bg-black hover:-translate-y-1 transition-all shadow-xl shadow-black/20 uppercase tracking-widest text-sm">
+                {PROMO_BANNER.buttonText}
+              </Link>
+            </div>
+            
+            <div className="w-full h-full md:w-2/5 absolute md:relative bottom-0 right-0 md:inset-auto md:self-stretch flex items-center justify-center bg-white">
+              <div className="absolute inset-0 bg-gradient-to-r from-orange-600/90 md:from-orange-600 to-transparent z-10"></div>
+              <img src={PROMO_BANNER.image} alt={PROMO_BANNER.title} className="w-full h-full object-cover mix-blend-overlay md:mix-blend-normal opacity-30 md:opacity-100 object-center" />
+            </div>
+          </div>
+        )}
 
         <div className="relative -mx-4 px-4 md:mx-0 md:px-0">
           <div 
