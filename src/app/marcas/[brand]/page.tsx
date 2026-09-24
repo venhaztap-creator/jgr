@@ -74,7 +74,7 @@ export default function MarcaPage({ params }: { params: Promise<{ brand: string 
       <Navbar />
 
       {/* HERO SECTION - Clean Premium Look */}
-      <div className="relative pt-24 pb-12 md:pt-40 md:pb-32 bg-gray-900 overflow-hidden">
+      <div className="relative pt-40 pb-12 md:pt-48 md:pb-32 bg-gray-900 overflow-hidden">
         {/* Background Image */}
         <div 
           className="absolute inset-0 opacity-20 mix-blend-luminosity transform scale-105"
